@@ -107,14 +107,28 @@
              error: (function () {
                  $(".removeSelf").css({display: 'block'});
              }),
-             dataType: 'text',
+             dataType: 'json',
              success: (function (json) {
                  console.log(json);
-                 $("#bacUrl").replaceWith("<a href="+json+">"+json+"</a>");
-                 window.open(json,"_blank");
+
+                 switch (json.type) {
+                     case "creatBlogSameName":
+                         $("#bacUrl").replaceWith("博客名字已经存在");
+                         break;
+                     case "creatBlogSuccess":
+                         createBlogSuccess(json);
+                 }
+
              })
 
          })
+
+
+         function createBlogSuccess(obj) {
+             var url = obj.url;
+             $("#bacUrl").replaceWith("<a href="+url+">"+url+"</a>");
+             window.open(url,"_blank");
+         }
 
      })
 
