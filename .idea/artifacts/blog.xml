@@ -1,0 +1,20 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="blog">
+    <output-path>$PROJECT_DIR$/out/artifacts/blog</output-path>
+    <root id="archive" name="blog.war">
+      <element id="javaee-facet-resources" facet="blog/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="blog" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="mysql-connector-java-5.1.7-bin" />
+          <element id="library" level="project" name="c3p0-0.9.1.2" />
+          <element id="library" level="project" name="servlet-api" />
+          <element id="library" level="project" name="json" />
+          <element id="library" level="project" name="jsoup-1.15.3" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
