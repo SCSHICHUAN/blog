@@ -28,9 +28,9 @@ public class Servlet extends HttpServlet {
             case "/list.do":
                 BlogList.blogList(request,response);
                 break;
-//            case "/edit":
-//                EditBlog.edit(request,response);
-//                break;
+            case "/edit.do":
+                EditBlog.edit(request,response);
+                break;
         }
     }
 

@@ -95,20 +95,6 @@
 
          var  blogName = $("#blogName").val();
          var  result = window.editor.getHtml();
-         editor.dangerouslyInsertHtml("<pre><code class=\"language-html\">  var html = \"\";\n" +
-             "        for(var i =0;i&lt;names.length;i++){\n" +
-             "            var url = \"https://stanserver.cn:444/blog/\"+names[i]+\".html\";\n" +
-             "            html += \"&lt;div class=\\\"item\\\"&gt;\"+\"&lt;a href=\"+url+\"&gt;\"+url+\"&lt;/a&gt;\"\n" +
-             "                +\"&lt;button class=\\\"edit\\\" url =\\\"\"+url+\"\\\"&gt;编辑&lt;/button&gt;\"+\"&lt;/div&gt;\"\n" +
-             "        }\n" +
-             "        $(\".list\").html(html);\n" +
-             "        bindButton();</code></pre><p><br></p>");
-
-
-
-
-
-
 
 
 
@@ -168,8 +154,37 @@
         }
         return obj[key];
     }
-
     console.log(name);
+
+    var tmpName = name.toString();
+
+    if (!(tmpName == 'undefined')){
+        $.ajax({
+            contentType: "application/x-www-form-urlencoded; charset=utf-8",
+            type: 'post',
+            url: "/blog/edit.do",
+            data: {
+                blogName:name
+            },
+            error: (function () {
+                $(".removeSelf").css({display: 'block'});
+            }),
+            dataType: 'json',
+            success: (function (json) {
+                console.log(json);
+                var  str = return2Br(json.blogHtml);
+                editor.dangerouslyInsertHtml(json.blogHtml);
+            })
+        })
+    }
+
+
+    function return2Br(str) {
+        return str.replace(/\r?\n/g,"<br />");
+    }
+
+
+
 
 </script>
 </body>

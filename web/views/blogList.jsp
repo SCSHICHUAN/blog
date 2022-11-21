@@ -44,26 +44,8 @@
 
     }
 
-    // $(".abc").click(function () {
-    //     showBlogList();
-    // })
 
-
-    // setTimeout(function(){
-         showBlogList();
-    // },1000);
-
-
-
-    $.ajaxSetup({complete:function(xhr,status){
-            //若HEADER中含有REDIRECT说明后端想重定向
-            if("REDIRECT" == xhr.getResponseHeader("REDIRECT")){
-                //将后端重定向的地址取出来,使用win.location.href去实现重定向的要求
-                window.location.href = xhr.getResponseHeader("CONTENTPATH");
-            }
-        }});
-
-
+    showBlogList();
 
     function showList(names) {
 
@@ -78,30 +60,14 @@
     }
 
     function bindButton(){
+
+
         $(".edit").click(function (e) {
             var blogName = $(e.target).attr('blogName');
+            var origin = window.location.origin;
+
             console.log(blogName);
-
-            $.ajax({
-                contentType: "application/x-www-form-urlencoded; charset=utf-8",
-                type: 'post',
-                url: "/blog/edit",
-                data: {
-                    blogName:blogName
-                },
-                error: (function () {
-                    $(".removeSelf").css({display: 'block'});
-                }),
-                dataType: 'json',
-                success: (function (json) {
-                    console.log(json);
-                    showList(json.listName);
-                })
-            })
-
-
-
-
+            window.open(origin+"/blog/?name="+blogName,"_blank");
         });
     }
     
