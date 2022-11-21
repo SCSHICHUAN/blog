@@ -32,7 +32,7 @@ public class CreateBlog {
         }else {
             BlogName blogName1 = new BlogName(null,"1","test",blogName,null,null);
             AddBlogName(blogName1);
-            saveBlog(blogName,html);
+            saveBlogHtml(blogName,html);
 
         }
 
@@ -55,7 +55,7 @@ public class CreateBlog {
 
 
     //保存创建blog
-    private static void saveBlog(String blogName,String html){
+    private static void saveBlogHtml(String blogName,String html){
 
         String sql = "<!DOCTYPE html>\n" +
                 "<html>\n" +
@@ -74,8 +74,8 @@ public class CreateBlog {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd_HHmmss");
         Date now = new Date();
 //        String pathFile= "/Users/stan/Desktop/"+sdf.format(now)+".html";
-//        String pathFile= "/Users/stan/Desktop/"+blogName+".html";
-        String pathFile= "/root/webRTC/public/blog/"+blogName+".html";
+       String pathFile= "/Users/stan/Desktop/"+blogName+".html";
+//        String pathFile= "/root/webRTC/public/blog/"+blogName+".html";
         File file = new File(pathFile);
         try {
             FileOutputStream fop = new FileOutputStream(file);

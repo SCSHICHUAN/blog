@@ -95,6 +95,22 @@
 
          var  blogName = $("#blogName").val();
          var  result = window.editor.getHtml();
+         editor.dangerouslyInsertHtml("<pre><code class=\"language-html\">  var html = \"\";\n" +
+             "        for(var i =0;i&lt;names.length;i++){\n" +
+             "            var url = \"https://stanserver.cn:444/blog/\"+names[i]+\".html\";\n" +
+             "            html += \"&lt;div class=\\\"item\\\"&gt;\"+\"&lt;a href=\"+url+\"&gt;\"+url+\"&lt;/a&gt;\"\n" +
+             "                +\"&lt;button class=\\\"edit\\\" url =\\\"\"+url+\"\\\"&gt;编辑&lt;/button&gt;\"+\"&lt;/div&gt;\"\n" +
+             "        }\n" +
+             "        $(\".list\").html(html);\n" +
+             "        bindButton();</code></pre><p><br></p>");
+
+
+
+
+
+
+
+
 
          $.ajax({
              contentType: "application/x-www-form-urlencoded; charset=utf-8",
@@ -113,7 +129,7 @@
 
                  switch (json.type) {
                      case "creatBlogSameName":
-                         $("#bacUrl").replaceWith("博客名字已经存在");
+                         $("#bacUrl").html("博客名字已经存在");
                          break;
                      case "creatBlogSuccess":
                          createBlogSuccess(json);
@@ -126,11 +142,34 @@
 
          function createBlogSuccess(obj) {
              var url = obj.url;
-             $("#bacUrl").replaceWith("<a href="+url+">"+url+"</a>");
+             $("#bacUrl").html("<a href="+url+">"+url+"</a>");
              window.open(url,"_blank");
          }
 
      })
+
+
+
+    var search = window.location.search;//获取参数；
+
+
+    var name = getSearchString('name', search); //结果：18
+    //key(需要检索的键） url（传入的需要分割的url地址，例：?id=2&age=18）
+    function getSearchString(key, Url) {
+        var str = Url;
+        str = str.substring(1, str.length); // 获取URL中?之后的字符（去掉第一位的问号）
+        // 以&分隔字符串，获得类似name=xiaoli这样的元素数组
+        var arr = str.split("&");
+        var obj = new Object();
+        // 将每一个数组元素以=分隔并赋给obj对象
+        for (var i = 0; i < arr.length; i++) {
+            var tmp_arr = arr[i].split("=");
+            obj[decodeURIComponent(tmp_arr[0])] = decodeURIComponent(tmp_arr[1]);
+        }
+        return obj[key];
+    }
+
+    console.log(name);
 
 </script>
 </body>

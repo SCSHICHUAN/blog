@@ -1,6 +1,8 @@
 package server;
 
+import main.BlogList;
 import main.CreateBlog;
+import main.EditBlog;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,6 +22,15 @@ public class Servlet extends HttpServlet {
             case "/addBlog":
                 CreateBlog.addBlog(request,response);
             break;
+            case "/list":
+                BlogList.list(request,response);
+                break;
+            case "/list.do":
+                BlogList.blogList(request,response);
+                break;
+//            case "/edit":
+//                EditBlog.edit(request,response);
+//                break;
         }
     }
 
