@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class BlogList {
 
@@ -88,6 +89,9 @@ public class BlogList {
                         resultSet.getString("blogName"),
                         resultSet.getString("createDate"),
                         resultSet.getString("updateDate"));
+                if (Objects.equals(resultSet.getString("updateDate"),null)){
+                    blogName.updateDate = "无";
+                }
                 names.add(blogName);
             }
             return names;
