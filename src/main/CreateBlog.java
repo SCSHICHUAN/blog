@@ -14,6 +14,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Objects;
 
 public class CreateBlog {
 
@@ -25,15 +26,18 @@ public class CreateBlog {
 
         String html = (String) req.getParameter("html");
         String blogName = (String) req.getParameter("blogName");
+        String canEdit = (String) req.getParameter("canEdit");
+
 
 
         if (getBlogName(blogName)){
-            creatBlogFailed(req,res);
+            if (Objects.equals(canEdit,"yes")){
+                saveBlogHtml(blogName,html,false);
+            }else {
+                creatBlogFailed(req,res);
+            }
         }else {
-            BlogName blogName1 = new BlogName(null,"1","test",blogName,null,null);
-            AddBlogName(blogName1);
-            saveBlogHtml(blogName,html);
-
+            saveBlogHtml(blogName,html,true);
         }
 
 
@@ -55,7 +59,7 @@ public class CreateBlog {
 
 
     //保存创建blog
-    private static void saveBlogHtml(String blogName,String html){
+    private static void saveBlogHtml(String blogName,String html,boolean b){
 
         String sql = "<!DOCTYPE html>\n" +
                 "<html>\n" +
@@ -74,8 +78,8 @@ public class CreateBlog {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd_HHmmss");
         Date now = new Date();
 //        String pathFile= "/Users/stan/Desktop/"+sdf.format(now)+".html";
-       String pathFile= "/Users/stan/Desktop/"+blogName+".html";
-//        String pathFile= "/root/webRTC/public/blog/"+blogName+".html";
+//       String pathFile= "/Users/stan/Desktop/"+blogName+".html";
+        String pathFile= "/root/webRTC/public/blog/"+blogName+".html";
         File file = new File(pathFile);
         try {
             FileOutputStream fop = new FileOutputStream(file);
@@ -89,7 +93,15 @@ public class CreateBlog {
             fop.flush();
             //关闭此文件输出流并释放与此流有关的所有系统资源
             fop.close();
+
+            if (b){
+                //mysql save name
+                BlogName blogName1 = new BlogName(null,"1","test",blogName,null,null);
+                AddBlogName(blogName1);
+            }
+
             responesToCline(response,blogName);
+
         } catch (Exception e) {
             e.printStackTrace();
         }

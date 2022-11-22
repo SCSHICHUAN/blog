@@ -24,7 +24,7 @@
 <body>
 
 <demo-nav title="Stan blog"></demo-nav>
-<textarea  id="blogName" cols="30" rows="2"></textarea>
+<input id="blogName">
 <div class="page-container">
   <div class="page-left">
     <demo-menu></demo-menu>
@@ -88,6 +88,7 @@
      })
 
 
+     var canEdit = 'no';
      $(".commit").click(function () {
 
 
@@ -105,6 +106,7 @@
              data: {
                  blogName:blogName,
                  html: result,
+                 canEdit:canEdit
              },
              error: (function () {
                  $(".removeSelf").css({display: 'block'});
@@ -119,6 +121,8 @@
                          break;
                      case "creatBlogSuccess":
                          createBlogSuccess(json);
+                         $("#blogName").attr('disabled','disabled');
+                         canEdit = 'yes';
                  }
 
              })
@@ -137,8 +141,6 @@
 
 
     var search = window.location.search;//获取参数；
-
-
     var name = getSearchString('name', search); //结果：18
     //key(需要检索的键） url（传入的需要分割的url地址，例：?id=2&age=18）
     function getSearchString(key, Url) {
@@ -174,6 +176,8 @@
                 console.log(json);
                 var  str = return2Br(json.blogHtml);
                 editor.dangerouslyInsertHtml(json.blogHtml);
+                $("#blogName").val(tmpName).attr('disabled','disabled');
+                canEdit = 'yes';
             })
         })
     }

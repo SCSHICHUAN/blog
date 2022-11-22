@@ -2,6 +2,7 @@ package server;
 
 import main.BlogList;
 import main.CreateBlog;
+import main.DeleteBlog;
 import main.EditBlog;
 
 import javax.servlet.ServletException;
@@ -30,6 +31,9 @@ public class Servlet extends HttpServlet {
                 break;
             case "/edit.do":
                 EditBlog.edit(request,response);
+                break;
+            case "/deleBlog":
+                DeleteBlog.deleBlog(request,response);
                 break;
         }
     }

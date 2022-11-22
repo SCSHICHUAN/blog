@@ -52,8 +52,11 @@
         var html = "";
         for(var i =0;i<names.length;i++){
             var url = "https://stanserver.cn:444/blog/"+names[i]+".html";
-            html += "<div class=\"item\">"+"<a href="+url+">"+url+"</a>"
-                +"<button class=\"edit\" blogName =\""+names[i]+"\">编辑</button>"+"</div>"
+            html += "<div class=\"item\" deleName =\""+names[i]+"\">"
+                +"<a href="+url+">"+url+"</a>"
+                +"<button class=\"edit\" blogName =\""+names[i]+"\">编辑</button>"
+                +"<button class=\"dele\" deleName =\""+names[i]+"\">删除</button>"
+                +"</div>"
         }
         $(".list").html(html);
         bindButton();
@@ -65,10 +68,38 @@
         $(".edit").click(function (e) {
             var blogName = $(e.target).attr('blogName');
             var origin = window.location.origin;
-
             console.log(blogName);
             window.open(origin+"/blog/?name="+blogName,"_blank");
         });
+
+        $(".dele").click(function (e) {
+            var deleName = $(e.target).attr('deleName');
+            $.ajax({
+                contentType: "application/x-www-form-urlencoded; charset=utf-8",
+                type: 'post',
+                url: "/blog/deleBlog",
+                data: {
+                    blogName:deleName
+                },
+                error: (function () {
+                    $(".removeSelf").css({display: 'block'});
+                }),
+                dataType: 'json',
+                success: (function (json) {
+                    console.log(json);
+                    if (json.result == 'success'){
+
+                        var  elem = $("[deleName=\'"+deleName+"\']");
+                        elem.remove();
+
+                    }
+                })
+
+            })
+
+        })
+
+
     }
     
 
