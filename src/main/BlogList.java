@@ -1,6 +1,8 @@
 package main;
 
 import DAO.JDBC;
+import model.BlogName;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,15 +27,39 @@ public class BlogList {
     public static void blogList(HttpServletRequest request, HttpServletResponse response){
 
 
-        JSONObject json = new JSONObject();
-        ArrayList names = getBlogs();
-        json.put("listName",names);
+
+        JSONArray jsonArray =  ArrayListTOJSONarray(getBlogs());
+        System.out.print(jsonArray);
 
         try {
-            response.getOutputStream().write(json.toString().getBytes("utf8"));
+            response.getOutputStream().write(jsonArray.toString().getBytes("utf8"));
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+
+    public static JSONArray ArrayListTOJSONarray(ArrayList<BlogName> list){
+        JSONArray jsonArray = new JSONArray();
+
+        for (BlogName testIteam : list) {
+
+            /**
+             * 把 java-Object 转换为 json-Object
+             */
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("id", testIteam.id);
+            jsonObject.put("usrID", testIteam.usrID);
+            jsonObject.put("usrName", testIteam.usrName);
+            jsonObject.put("blogName", testIteam.blogName);
+            jsonObject.put("createDate", testIteam.createDate);
+            jsonObject.put("updateDate", testIteam.updateDate);
+
+            jsonArray.put(jsonObject);
+        }
+
+
+        return jsonArray;
     }
 
 
@@ -42,21 +68,27 @@ public class BlogList {
      * @param blogName
      * @return all blog list
      */
-    private static ArrayList<String> getBlogs(){
+    private static ArrayList<BlogName> getBlogs(){
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
-        ArrayList<String> names = new ArrayList<>();
+        ArrayList<BlogName> names = new ArrayList<>();
 
         try {
             connection = JDBC.GetConnection();
-            String sql = "select * from blogName";
+            String sql = "select * from blogName order by createDate desc";
             preparedStatement = connection.prepareStatement(sql);
 
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()){
-                String tmpBlogName = resultSet.getString("blogName");
-                names.add(tmpBlogName);
+                BlogName blogName = new BlogName(
+                        resultSet.getString("id"),
+                        resultSet.getString("usrID"),
+                        resultSet.getString("usrName"),
+                        resultSet.getString("blogName"),
+                        resultSet.getString("createDate"),
+                        resultSet.getString("updateDate"));
+                names.add(blogName);
             }
             return names;
 

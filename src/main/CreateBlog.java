@@ -98,6 +98,8 @@ public class CreateBlog {
                 //mysql save name
                 BlogName blogName1 = new BlogName(null,"1","test",blogName,null,null);
                 AddBlogName(blogName1);
+            }else {
+                updateTime(blogName);
             }
 
             responesToCline(response,blogName);
@@ -133,12 +135,11 @@ public class CreateBlog {
 
         try {
             c = JDBC.GetConnection();
-            String sql = "insert blogName(id,usrID,usrName,blogName,createDate,updateDate) values(null,?,?,?,null,?)";
+            String sql = "insert blogName(usrID,usrName,blogName) values(?,?,?)";
             p = c.prepareStatement(sql);
             p.setObject(1,blogName.usrID);
             p.setObject(2,blogName.usrName);
             p.setObject(3,blogName.blogName);
-            p.setObject(4,date);
 
             int rows = p.executeUpdate();
             if (rows > 0){
@@ -187,7 +188,38 @@ public class CreateBlog {
         return false;
     }
 
+    /**
+     *
+     * @param blogName
+     * @return 数据库操作成功
+     */
+    public  static  boolean updateTime(String blogName){
+        Connection c  = null;
+        PreparedStatement p = null;
+        Date date = new Date();
 
+        try {
+            c = JDBC.GetConnection();
+            String sql = "UPDATE blogName set updateDate = ?  WHERE blogName = ?";
+            p = c.prepareStatement(sql);
+            p.setObject(1,date);
+            p.setObject(2,blogName);
+
+
+            int rows = p.executeUpdate();
+            if (rows > 0){
+                return true;
+            }else {
+                return false;
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }finally {
+            JDBC.close(p,c);
+        }
+    }
 
 
 }

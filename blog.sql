@@ -2,12 +2,12 @@
 create database blog;
 use blog;
 
-create table blogName (
- id int  auto_increment  comment '自增id',
- usrID int comment '用户ID',
- usrName varchar(20) null comment '用户名字',
- blogName varchar(100) not null comment '博客名字',
- createDate timestamp not null comment '博客创建时间',
- updateDate timestamp null default current_timestamp comment  '博客修改时间',
- primary key (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+CREATE TABLE `blogName` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增id',
+  `usrID` int(11) DEFAULT NULL COMMENT '用户ID',
+  `usrName` varchar(20) DEFAULT NULL COMMENT '用户名字',
+  `blogName` varchar(100) NOT NULL COMMENT '博客名字',
+  `createDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '博客创建时间,仅插入时纪录',
+  `updateDate` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '博客修改时间,记录,数据库必须有改动',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8

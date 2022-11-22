@@ -19,8 +19,8 @@
 <%--width: 400px;height: 200px;position: fixed;margin: auto;top: 0;--%>
 <%--bottom: 0;right: 0;left: 0;color: white;text-align: center;line-height: 200px;--%>
 <%--z-index: 999;">请求失败...</div>--%>
+<div class="headTxt">博客列表</div>
 <div class="list"></div>
-
 <script>
 
 
@@ -32,13 +32,15 @@
             type: 'post',
             url: "/blog/list.do",
             data: {},
-            error: (function () {
+            error: (function (e) {
                 $(".removeSelf").css({display: 'block'});
+                console.log(e);
             }),
             dataType: 'json',
-            success: (function (json) {
-                console.log(json);
-                showList(json.listName);
+            success: (function (objs) {
+
+                console.log(objs);
+                showList(objs);
             })
         })
 
@@ -50,32 +52,41 @@
 
     showBlogList();
 
-    function showList(names) {
+    function showList(objs) {
 
         var html = "";
-        for(var i =0;i<names.length;i++){
-            var url = "https://stanserver.cn:444/blog/"+names[i]+".html";
+        for(var i =0;i<objs.length;i++){
+            var url = "https://stanserver.cn:444/blog/"+objs[i].blogName+".html";
               html +=
+            "<div class=\"item\" deleName =\""+objs[i].blogName+"\">"
+            +"<table>\n"
+            +"<tr>\n"
 
+            +"<th class='t1'>"
+               +"<a class='info'>"
+               +"<a\ class=\"headName\">"+objs[i].blogName+"</a>"
+               +"<br/>"
+                  +"<a href='"+url+"'>"+url+"</a>"
+               +"</div>"
+            +"</th>\n"
 
-                 "<div class=\"item\" deleName =\""+names[i]+"\">"
-           +"<table>\n"
-                  +"    <tr>\n"
-            +"        <th>"+"<div class='info'>"
-            +"<a class=\"headName\">"+names[i]+"</a>"
-            +"<br/>"
-            +"<a href="+url+">"+url+"</a>"
-            +"</div>"+"</th>\n"
-            +"        <th>"+"<div class='bb'>"
+            +"<th class='t2'>"
+                  +"<div class='time'>创建:"+objs[i].createDate+"</div>"
+                  +"<div class='timeEdit'> 修改:"+objs[i].updateDate+"</div>"
+            +"</th>"
 
-            +"<button class=\"dele\" deleName =\""+names[i]+"\">删除</button>"
+            +"<th class='t3'>"
+               +"<div class='bb'>"
+               +"<button class=\"dele\" deleName =\""+objs[i].blogName+"\">删除</button>"
+               +"<button class=\"edit\" blogName =\""+objs[i].blogName+"\">编辑</button>"
+               +"</div>"
+            +"</th>\n"
 
-                  +"<button class=\"edit\" blogName =\""+names[i]+"\">编辑</button>"
-            +"</div>"+"</th>\n" +
-            "    </tr>\n" +
-            "</table>"
-                +"</div>";
+            +"</tr>\n"
+            +"</table>"
+            +"</div>";
         }
+
         $(".list").html(html);
         bindButton();
     }
