@@ -8,7 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>博客列表</title>
+    <link rel="icon" href="img/108-1.png">
+    <link rel="stylesheet" href="css/list.css">
 </head>
 <body>
 <script type="text/javascript" src="/blog/js/jquery-1.4.2.js"></script>
@@ -18,6 +20,7 @@
 <%--bottom: 0;right: 0;left: 0;color: white;text-align: center;line-height: 200px;--%>
 <%--z-index: 999;">请求失败...</div>--%>
 <div class="list"></div>
+
 <script>
 
 
@@ -52,11 +55,26 @@
         var html = "";
         for(var i =0;i<names.length;i++){
             var url = "https://stanserver.cn:444/blog/"+names[i]+".html";
-            html += "<div class=\"item\" deleName =\""+names[i]+"\">"
-                +"<a href="+url+">"+url+"</a>"
-                +"<button class=\"edit\" blogName =\""+names[i]+"\">编辑</button>"
-                +"<button class=\"dele\" deleName =\""+names[i]+"\">删除</button>"
-                +"</div>"
+              html +=
+
+
+                 "<div class=\"item\" deleName =\""+names[i]+"\">"
+           +"<table>\n"
+                  +"    <tr>\n"
+            +"        <th>"+"<div class='info'>"
+            +"<a class=\"headName\">"+names[i]+"</a>"
+            +"<br/>"
+            +"<a href="+url+">"+url+"</a>"
+            +"</div>"+"</th>\n"
+            +"        <th>"+"<div class='bb'>"
+
+            +"<button class=\"dele\" deleName =\""+names[i]+"\">删除</button>"
+
+                  +"<button class=\"edit\" blogName =\""+names[i]+"\">编辑</button>"
+            +"</div>"+"</th>\n" +
+            "    </tr>\n" +
+            "</table>"
+                +"</div>";
         }
         $(".list").html(html);
         bindButton();

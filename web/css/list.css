@@ -1,0 +1,49 @@
+body{
+    background-color: rgb(240, 240, 240);
+}
+.item{
+    width: 95%;
+    padding: 5px;
+    margin: 10px;
+    background-color: white;
+    border-radius: 2px;
+}
+table{
+    width: 100%;
+    broder:1px;
+}
+.info{
+    text-align: left;
+}
+.headName{
+    font-size: 15px;
+    color: black;
+}
+a{
+    font-size: 1px;
+    color: rgb(15,130,246);
+    text-decoration: none;
+}
+.bb{
+    display: flex;
+    justify-content:flex-end;
+    /*background: aqua;*/
+}
+
+.edit,.dele{
+    border:none;
+    background-color: rgb(246, 247, 250);
+    border-radius: 2px;
+    margin-right: 10px;
+}
+.dele{
+    border: 1px solid rgb(216,13,11);
+    background: rgba(216,13,11,0.2);
+    color: rgb(216,13,11);
+}
+
+.edit{
+    border: 1px solid rgb(46,159,75);
+    background: rgba(46,159,75,1);
+    color: white;
+}
