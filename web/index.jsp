@@ -17,14 +17,24 @@
   <link href="https://cdn.jsdelivr.net/npm/@wangeditor/editor@latest/dist/css/style.css" rel="stylesheet">
   <link href="https://unpkg.com/@wangeditor/editor@latest/dist/css/style.css" rel="stylesheet">
   <link href="./css/layout.css" rel="stylesheet">
-</head>
-
+  <link href="css/index.css" rel="stylesheet">
   <script type="text/javascript" src="/blog/js/jquery-1.4.2.js"></script>
 </head>
-<body>
 
+
+<body>
+<div class="wel3">
+  <button class="commit">提交</button>
+  <label class="wel4"><span id="total-length"></span><label id="bacUrl"></label></label>
+</div>
+<div class="wel1">Welcome to my blog Create Space</div>
+<div class="wel2">
+   <input id="blogName" placeholder="请输入博客名不能重复">
+    <%--<textarea id="blogName" cols="50" rows="2" placeholder="请输入博客名不能重复"></textarea>--%>
+</div>
+
+<div class="hea"></div>
 <demo-nav title="Stan blog"></demo-nav>
-<input id="blogName">
 <div class="page-container">
   <div class="page-left">
     <demo-menu></demo-menu>
@@ -35,17 +45,18 @@
       <div id="editor-toolbar" style="border-bottom: 1px solid #ccc;"></div>
       <div id="editor-text-area" style="height: 500px"></div>
     </div>
-
     <!-- 内容状态 -->
-    <p style="background-color: #f1f1f1;">
-      Text length: <span id="total-length"></span>；
-      Selected text length: <span id="selected-length"></span>；
-    </p>
+    <span id="selected-length"></span>
+
   </div>
 </div>
 
-<button class="commit">提交</button>
-<h1 id="bacUrl"></h1>
+
+
+
+
+
+
 <!-- <script src="https://cdn.jsdelivr.net/npm/@wangeditor/editor@latest/dist/index.min.js"></script> -->
 <script src="https://unpkg.com/@wangeditor/editor@latest/dist/index.js"></script>
 <script>
