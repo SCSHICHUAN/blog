@@ -54,12 +54,10 @@
 
 
 
-
-
-
 <!-- <script src="https://cdn.jsdelivr.net/npm/@wangeditor/editor@latest/dist/index.min.js"></script> -->
 <script src="https://unpkg.com/@wangeditor/editor@latest/dist/index.js"></script>
 <script>
+
 
 
 
@@ -70,7 +68,7 @@
 
     window.editor = E.createEditor({
         selector: '#editor-text-area',
-        html: '<p><br></p>',
+        html: '',
         config: {
             placeholder: 'Type here...',
             MENU_CONF: {
@@ -84,10 +82,10 @@
 
                 // 选中文字
                 const selectionText = editor.getSelectionText()
-                document.getElementById('selected-length').innerHTML = selectionText.length
+                document.getElementById('selected-length').innerHTML = selectionText.length;
                 // 全部文字
-                const text = editor.getText().replace(/\n|\r/mg, '')
-                document.getElementById('total-length').innerHTML = text.length
+                const text = editor.getText().replace(/\n|\r/mg, '');
+                document.getElementById('total-length').innerHTML = text.length;
             }
         }
     })

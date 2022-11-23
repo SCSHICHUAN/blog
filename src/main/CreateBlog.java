@@ -1,5 +1,6 @@
 package main;
 
+
 import DAO.JDBC;
 import model.BlogName;
 import org.json.JSONObject;
@@ -15,6 +16,7 @@ import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
+import Share.Share;
 
 public class CreateBlog {
 
@@ -61,7 +63,24 @@ public class CreateBlog {
     //保存创建blog
     private static void saveBlogHtml(String blogName,String html,boolean b){
 
-        String sql = "<!DOCTYPE html>\n" +
+
+        String blogHeaderTitle = "<div class=\"bolgHeader\" style=\"\n" +
+                "background: rgb(71,148,255);\n" +
+                "width: 100%; padding-top: 40px;\n" +
+                "padding-bottom:40px;\n" +
+                "display: flex;\n" +
+                "justify-content: center\">\n" +
+                "<div\n" +
+                "     style=\"\n" +
+                "     color: white;\n" +
+                "     text-align: left;\n" +
+                "     max-width: 80%;\n" +
+                "     font-size: 20px;\n" +
+                "     word-wrap:break-word\">"+blogName+"</div>\n" +
+                "</div>";
+
+
+        String htmlTmp = "<!DOCTYPE html>\n" +
                 "<html>\n" +
                 "<head>\n" +
                 "<link href=\"https://cdn.jsdelivr.net/npm/prismjs@v1.x/themes/prism.css\" rel=\"stylesheet\" />\n" +
@@ -69,24 +88,25 @@ public class CreateBlog {
                 "<script src=\"https://cdn.jsdelivr.net/npm/prismjs@v1.x/plugins/autoloader/prism-autoloader.min.js\"></script>" +
                 "\t<title>石川博客</title>\n" +
                 "</head>\n" +
-                "<body>\n" +
-                "\t"+html+"\n" +
+                "<body style=\"margin: 0px\">\n" +
+                blogHeaderTitle+
+                "<div class=\"edit\">"+"\t"+html+"\n"+" </div>"+
                 "\n" +
                 "</body>\n" +
                 "</html>";
         //输出文件1029
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd_HHmmss");
-        Date now = new Date();
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd_HHmmss");
+//        Date now = new Date();
 //        String pathFile= "/Users/stan/Desktop/"+sdf.format(now)+".html";
-//       String pathFile= "/Users/stan/Desktop/"+blogName+".html";
-        String pathFile= "/root/webRTC/public/blog/"+blogName+".html";
+        String pathFile= Share.fileHome()+blogName+".html";
+
         File file = new File(pathFile);
         try {
             FileOutputStream fop = new FileOutputStream(file);
             if(!file.exists()){
                 file.createNewFile();
             }
-            byte[] contentInBytes = sql.getBytes();
+            byte[] contentInBytes = htmlTmp.getBytes();
             System.out.println("contentInBytes===="+contentInBytes);
             fop.write(contentInBytes);
             //先清空缓冲区数据,保证缓存清空输出

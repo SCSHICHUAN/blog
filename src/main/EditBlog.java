@@ -1,5 +1,6 @@
 package main;
 
+import Share.Share;
 import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -19,18 +20,17 @@ public class EditBlog {
         String blogName = (String) request.getParameter("blogName");
 
 
-        String filePath = "/root/webRTC/public/blog/"+blogName+".html";
+        String filePath = Share.fileHome()+blogName+".html";
         //读取.html文件为字符串
         String htmlStr = toHtmlString(new File(filePath));
         //解析字符串为Document对象
         Document doc = Jsoup.parse(htmlStr);
         //获取body元素，获取class="fc"的table元素
-        System.out.print(doc.body());
-
-
+        Elements edit =  doc.getElementsByClass("edit");
+        System.out.print(edit.toString());
        try {
            JSONObject json = new JSONObject();
-           json.put("blogHtml",doc.body());
+           json.put("blogHtml",edit.toString());
 
            try {
                response.getOutputStream().write(json.toString().getBytes("utf8"));
