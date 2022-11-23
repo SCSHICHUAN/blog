@@ -108,6 +108,11 @@
          var  blogName = $("#blogName").val();
          var  result = window.editor.getHtml();
 
+         if (blogName.length <= 0)
+             return $("#total-length").html("请输入博客名字...");
+         if(result.length <= 0)
+             return $("#total-length").html("博客内容为空...");
+
 
 
          $.ajax({
@@ -128,7 +133,7 @@
 
                  switch (json.type) {
                      case "creatBlogSameName":
-                         $("#bacUrl").html("博客名字已经存在");
+                         $("#total-length").html("博客名字已经存在");
                          break;
                      case "creatBlogSuccess":
                          createBlogSuccess(json);
