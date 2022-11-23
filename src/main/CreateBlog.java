@@ -13,7 +13,6 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 import Share.Share;
@@ -94,6 +93,7 @@ public class CreateBlog {
                 "\n" +
                 "</body>\n" +
                 "</html>";
+
         //输出文件1029
 //        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd_HHmmss");
 //        Date now = new Date();

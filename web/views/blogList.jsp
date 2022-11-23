@@ -145,7 +145,6 @@
             var deleName = $(e.target).attr('ddName');
             var inputName = $(".inputName").val();
             if (deleName != inputName) return;
-            $(".editAlter").css({visibility:'hidden'});
             $.ajax({
                 contentType: "application/x-www-form-urlencoded; charset=utf-8",
                 type: 'post',
@@ -164,7 +163,7 @@
                         var  elem = $("[deleName=\'"+deleName+"\']");
                         elem.remove();
 
-                        var editAlter = $('[alter="'+delName+'"]');
+                        var editAlter = $("[alter=\'"+deleName+"\']");;
                         editAlter.remove();
 
                     }
