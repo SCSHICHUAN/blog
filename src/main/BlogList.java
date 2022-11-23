@@ -30,8 +30,6 @@ public class BlogList {
 
 
         JSONArray jsonArray =  ArrayListTOJSONarray(getBlogs());
-        System.out.print(jsonArray);
-
         try {
             response.getOutputStream().write(jsonArray.toString().getBytes("utf8"));
         }catch (Exception e){

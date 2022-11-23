@@ -14,11 +14,13 @@
 </head>
 <body>
 <script type="text/javascript" src="/blog/js/jquery-1.4.2.js"></script>
-<%--<div class="removeSelf" style="background-color: rgb(45,45,45);--%>
-<%--border-radius: 5px;box-shadow: 0 0 50px rgba(0,0,0,0.2);--%>
-<%--width: 400px;height: 200px;position: fixed;margin: auto;top: 0;--%>
-<%--bottom: 0;right: 0;left: 0;color: white;text-align: center;line-height: 200px;--%>
-<%--z-index: 999;">请求失败...</div>--%>
+<%--<div class="editAlter">--%>
+    <%--<label>删除博客</label>--%>
+    <%--<label class="deName"></label>--%>
+    <%--<input type="text" class="inputName" placeholder="博客名字">--%>
+    <%--<button class="cancel">取消</button>--%>
+    <%--<button class="confirm">删除</button>--%>
+<%--</div>--%>
 <div class="headTxt">博客列表</div>
 <div class="list"></div>
 <script>
@@ -91,6 +93,7 @@
         bindButton();
     }
 
+
     function bindButton(){
 
 
@@ -102,7 +105,47 @@
         });
 
         $(".dele").click(function (e) {
-            var deleName = $(e.target).attr('deleName');
+           var delElem = $(e.target).attr('deleName');
+
+            var removeEl = $('[alter="'+delElem+'"]');
+            removeEl.remove();
+
+
+             var ele =  "<div class=\"editAlter\" alter=\""+delElem+"\">\n" +
+                 "    <label class='blogDD'>删除博客:</label>\n" +
+                 "    <label class=\"deName\">"+delElem+"</label>\n" +
+                 "    <input type=\"text\" class=\"inputName\" placeholder=\"博客名字\">\n" +
+                 "    <button class=\"cancel\" ddName=\""+delElem+"\">取消</button>\n" +
+                 "    <button class=\"confirm\" ddName=\""+delElem+"\">删除</button>\n" +
+                 "</div>";
+
+             var item =  $(e.target).parents('[deleName="'+delElem+'"]');
+             item.after(ele);
+             console.log(item);
+             bundClickDele();
+
+
+        });
+
+
+    }
+
+    /**
+     * 动态生成的Document 要绑定一下
+     * */
+    function bundClickDele(){
+
+        $(".cancel").click(function (e) {
+            var delName = $(e.target).attr('ddName');
+            var editAlter = $(e.target).parents('[alter="'+delName+'"]');
+            editAlter.remove();
+        });
+        $(".confirm").click(function (e) {
+
+            var deleName = $(e.target).attr('ddName');
+            var inputName = $(".inputName").val();
+            if (deleName != inputName) return;
+            $(".editAlter").css({visibility:'hidden'});
             $.ajax({
                 contentType: "application/x-www-form-urlencoded; charset=utf-8",
                 type: 'post',
@@ -121,16 +164,19 @@
                         var  elem = $("[deleName=\'"+deleName+"\']");
                         elem.remove();
 
+                        var editAlter = $('[alter="'+delName+'"]');
+                        editAlter.remove();
+
                     }
                 })
 
             })
-
         })
 
 
     }
-    
+
+
 
 
 

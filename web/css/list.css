@@ -43,23 +43,27 @@ a{
     /*background: aqua;*/
 }
 
-.edit,.dele{
+.edit,.dele,.cancel,confirm{
     border:none;
     background-color: rgb(246, 247, 250);
     border-radius: 2px;
     margin-right: 10px;
 }
-.dele{
+.dele,.confirm{
     border: 1px solid rgb(216,13,11);
     background: rgba(216,13,11,0.2);
     color: rgb(216,13,11);
 }
 
-.edit{
+.edit,.cancel{
     border: 1px solid rgb(46,159,75);
     background: rgba(46,159,75,1);
     color: white;
 }
+.deName,.blogDD{
+    color: red;
+}
+
 
 .time,.timeEdit{
     font-weight: lighter;
@@ -82,3 +86,24 @@ a{
     text-align: right;
 }
 
+.editAlter{
+    width: 95%;
+    padding: 5px;
+    margin: -10px 10px 0px 10px;
+    /*border: 1px solid rgb(216,13,11);*/
+    background: rgba(216,13,11,0.2);
+    border-radius: 2px;
+    /*box-shadow: 0 0 50px rgba(0,0,0,0.2);*/
+    /*height: 100px;*/
+    /*position: fixed;*/
+    /*margin: auto;*/
+    /*top: 0;*/
+    /*bottom: 0;*/
+    /*right: 0;*/
+    /*left: 0;*/
+    color: black;
+    text-align: right;
+    /*z-index: 999;*/
+    /*visibility: hidden;*/
+
+}
