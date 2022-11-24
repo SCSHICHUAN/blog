@@ -15,7 +15,7 @@
   <title>石川的博客</title>
   <link href="https://cdn.bootcdn.net/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/@wangeditor/editor@latest/dist/css/style.css" rel="stylesheet">
-  <link href="https://unpkg.com/@wangeditor/editor@latest/dist/css/style.css" rel="stylesheet">
+  <script src="https://unpkg.com/@wangeditor/editor@latest/dist/index.js"></script>
   <link href="./css/layout.css" rel="stylesheet">
   <link href="css/index.css" rel="stylesheet">
   <script type="text/javascript" src="/blog/js/jquery-1.4.2.js"></script>
@@ -30,32 +30,19 @@
 <div class="wel1">Welcome to my blog Create Space</div>
 <div class="wel2">
    <input id="blogName" placeholder="请输入博客名不能重复">
-    <%--<textarea id="blogName" cols="50" rows="2" placeholder="请输入博客名不能重复"></textarea>--%>
 </div>
 
-<div class="hea"></div>
-<demo-nav title="Stan blog"></demo-nav>
-<div class="page-container">
-  <div class="page-left">
-    <demo-menu></demo-menu>
-  </div>
-  <div class="page-right">
-    <!-- 编辑器 DOM -->
-    <div style="border: 1px solid #ccc;">
+
+
       <div id="editor-toolbar" style="border-bottom: 1px solid #ccc;"></div>
       <div id="editor-text-area" style="height: 500px"></div>
-    </div>
-    <!-- 内容状态 -->
-    <span id="selected-length"></span>
-
-  </div>
-</div>
 
 
 
 
-<!-- <script src="https://cdn.jsdelivr.net/npm/@wangeditor/editor@latest/dist/index.min.js"></script> -->
-<script src="https://unpkg.com/@wangeditor/editor@latest/dist/index.js"></script>
+
+
+
 <script>
 
 
@@ -78,11 +65,11 @@
                 }
             },
             onChange(editor) {
-                console.log(editor.getHtml())
+                console.log(editor.getHtml());
 
-                // 选中文字
-                const selectionText = editor.getSelectionText()
-                document.getElementById('selected-length').innerHTML = selectionText.length;
+                // // 选中文字
+                // const selectionText = editor.getSelectionText();
+                // document.getElementById('selected-length').innerHTML = selectionText.length;
                 // 全部文字
                 const text = editor.getText().replace(/\n|\r/mg, '');
                 document.getElementById('total-length').innerHTML = text.length;
