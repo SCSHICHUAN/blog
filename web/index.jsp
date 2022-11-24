@@ -36,6 +36,6 @@
       <div id="editor-text-area"></div>
 
 <script type="text/javascript" src="/blog/js/editMain.js"></script>
-<div style="text-align:center;padding-bottom: 10px;padding-top: 20px"><code>stanserver.cn stanserver@163.cm</code></div></body>
+<div style="text-align:center;padding-bottom: 10px;padding-top: 20px"><code>stanserver.cn stanserver@163.com</code></div></body>
 </body>
 </html>

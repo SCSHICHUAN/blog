@@ -122,7 +122,7 @@ public class CreateBlog {
                 "border-radius: 3px;min-height: 500px\">"+
                 "\t"+html+"\n"+" </div>"+
                 "\n" +
-                "<div style=\"text-align:center;\"><code>stanserver.cn stanserver@163.cm</code></div>"+
+                "<div style=\"text-align:center;\"><code>stanserver.cn stanserver@163.com</code></div>"+
                 "</body>\n" +
                 "</html>";
 
