@@ -1,4 +1,6 @@
 
+
+var  totalText = 0;
 const E = window.wangEditor
 // 切换语言
 const LANG = location.href.indexOf('lang=en') > 0 ? 'en' : 'zh-CN'
@@ -25,6 +27,7 @@ window.editor = E.createEditor({
             // 全部文字
             const text = editor.getText().replace(/\n|\r/mg, '');
             document.getElementById('total-length').innerHTML = text.length;
+            totalText = text.length;
         }
     }
 });
@@ -55,6 +58,7 @@ $(".commit").click(function () {
     var  blogName = $("#blogName").val();
     var  result = window.editor.getHtml();
 
+
     if (blogName.length <= 0)
         return $("#total-length").html("请输入博客名字...");
     if(result.length <= 0)
@@ -68,6 +72,7 @@ $(".commit").click(function () {
         url: "/blog/addBlog",
         data: {
             blogName:blogName,
+            totalText:totalText,
             html: result,
             canEdit:canEdit
         },

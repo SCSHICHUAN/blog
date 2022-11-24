@@ -30,17 +30,18 @@ public class CreateBlog {
         String html = (String) req.getParameter("html");
         String blogName = (String) req.getParameter("blogName");
         String canEdit = (String) req.getParameter("canEdit");
+        String totalText = (String) req.getParameter("totalText");
 
 
 
         if (getBlogName(blogName)){
             if (Objects.equals(canEdit,"yes")){
-                saveBlogHtml(blogName,html,false);
+                saveBlogHtml(blogName,totalText,html,false);
             }else {
                 creatBlogFailed(req,res);
             }
         }else {
-            saveBlogHtml(blogName,html,true);
+            saveBlogHtml(blogName,totalText,html,true);
         }
 
 
@@ -62,7 +63,7 @@ public class CreateBlog {
 
 
     //保存创建blog
-    private static void saveBlogHtml(String blogName,String html,boolean b){
+    private static void saveBlogHtml(String blogName,String totalText,String html,boolean b){
 
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -95,7 +96,7 @@ public class CreateBlog {
                 "\tmax-width: 80%;\n" +
                 "\tmargin-left:2.5%; \n" +
                 "\tword-wrap:break-word\"><code>"+blogName+" \n" +
-                "\t\t<br/>Text:178 Create:"+createTime+" Edit:"+editTime+"</code>\n" +
+                "\t\t<br/>Text:"+totalText+" Create:"+createTime+" Edit:"+editTime+"</code>\n" +
                 "</div>\n" +
                 "</div>";
 
