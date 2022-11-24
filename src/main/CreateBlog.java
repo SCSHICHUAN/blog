@@ -13,6 +13,8 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Objects;
 import Share.Share;
@@ -63,20 +65,40 @@ public class CreateBlog {
     private static void saveBlogHtml(String blogName,String html,boolean b){
 
 
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date now = new Date();
+
+        String createTime = "";
+        String editTime = "";
+
+
+         if (b){
+             createTime = sdf.format(now);
+             editTime = "no";
+         }else {
+             ArrayList<BlogName> blogs = getBlogs(blogName);
+             BlogName blogName1= blogs.get(0);
+             createTime = blogName1.createDate;
+             editTime = sdf.format(now);
+         }
+
         String blogHeaderTitle = "<div class=\"bolgHeader\" style=\"\n" +
-                "background: rgb(71,148,255);\n" +
-                "width: 100%; padding-top: 40px;\n" +
-                "padding-bottom:40px;\n" +
-                "display: flex;\n" +
-                "justify-content: center\">\n" +
-                "<div\n" +
-                "     style=\"\n" +
-                "     color: white;\n" +
-                "     text-align: left;\n" +
-                "     max-width: 80%;\n" +
-                "     font-size: 20px;\n" +
-                "     word-wrap:break-word\">"+blogName+"</div>\n" +
+                "\tbackground: rgb(71,148,255);\n" +
+                "\twidth: 100%; \n" +
+                "\tpadding-top: 10px;\n" +
+                "\tpadding-bottom:10px;\n" +
+                "\tdisplay: flex;\n" +
+                "\tjustify-content: flex-start;\">\n" +
+                "\t<div style=\"\n" +
+                "\tcolor: white;\n" +
+                "\ttext-align: left;\n" +
+                "\tmax-width: 80%;\n" +
+                "\tmargin-left:2.5%; \n" +
+                "\tword-wrap:break-word\"><code>"+blogName+" \n" +
+                "\t\t<br/>Text:178 Create:"+createTime+" Edit:"+editTime+"</code>\n" +
+                "</div>\n" +
                 "</div>";
+
 
 
         String htmlTmp = "<!DOCTYPE html>\n" +
@@ -87,10 +109,19 @@ public class CreateBlog {
                 "<script src=\"https://cdn.jsdelivr.net/npm/prismjs@v1.x/plugins/autoloader/prism-autoloader.min.js\"></script>" +
                 "\t<title>石川博客</title>\n" +
                 "</head>\n" +
-                "<body style=\"margin: 0px\">\n" +
+                "<body style=\"margin: 0px;background-color: rgb(240,240,240);\">\n" +
                 blogHeaderTitle+
-                "<div class=\"edit\">"+"\t"+html+"\n"+" </div>"+
+                "<div class=\"edit\" style=\"\n" +
+                "margin-top:6px;\n" +
+                "margin-right:5%;\n" +
+                "margin-left: 5%;\n" +
+                "margin-bottom:10px;\n" +
+                "background: rgb(255,255,255);\n" +
+                "padding: 20px;\n" +
+                "border-radius: 3px;min-height: 500px\">"+
+                "\t"+html+"\n"+" </div>"+
                 "\n" +
+                "<div style=\"text-align:center;\"><code>stanserver.cn stanserver@163.cm</code></div>"+
                 "</body>\n" +
                 "</html>";
 
@@ -240,6 +271,51 @@ public class CreateBlog {
             JDBC.close(p,c);
         }
     }
+
+
+
+    /**
+     *
+     * @param name
+     * @return all blog list
+     */
+    private static ArrayList<BlogName> getBlogs(String name){
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        ArrayList<BlogName> names = new ArrayList<>();
+
+        try {
+            connection = JDBC.GetConnection();
+            String sql = "select * from blogName where blogName = ?";
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setObject(1,name);
+
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                BlogName blogName = new BlogName(
+                        resultSet.getString("id"),
+                        resultSet.getString("usrID"),
+                        resultSet.getString("usrName"),
+                        resultSet.getString("blogName"),
+                        resultSet.getString("createDate"),
+                        resultSet.getString("updateDate"));
+                if (Objects.equals(resultSet.getString("updateDate"),null)){
+                    blogName.updateDate = "no";
+                }
+                names.add(blogName);
+            }
+            return names;
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            JDBC.close(preparedStatement,connection);
+        }
+
+        return null;
+    }
+
 
 
 }
