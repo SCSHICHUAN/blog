@@ -117,7 +117,7 @@ public class CreateBlog {
                 "margin-left: 5%;\n" +
                 "margin-bottom:10px;\n" +
                 "background: rgb(255,255,255);\n" +
-                "padding: 20px;\n" +
+                "padding: 30px;\n" +
                 "border-radius: 3px;min-height: 500px\">"+
                 "\t"+html+"\n"+" </div>"+
                 "\n" +

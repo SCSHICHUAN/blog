@@ -21,7 +21,7 @@
     <%--<button class="cancel">取消</button>--%>
     <%--<button class="confirm">删除</button>--%>
 <%--</div>--%>
-<div class="headTxt">博客列表</div>
+<div class="headTxt">List of blogs with <span class="allBlogs"></span> posts</div>
 <div class="list"></div>
 <script>
 
@@ -89,6 +89,7 @@
             +"</div>";
         }
 
+        $(".allBlogs").html(objs.length);
         $(".list").html(html);
         bindButton();
     }
