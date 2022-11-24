@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<!DOCTYPE html><%--这里让我找了一天，编辑器外框不会根着内容一起放大，这行默认是<html>--%>
 <head>
     <link rel="icon" href="img/108-1.png">
     <meta charset="UTF-8">
@@ -36,5 +36,6 @@
       <div id="editor-text-area"></div>
 
 <script type="text/javascript" src="/blog/js/editMain.js"></script>
+<div style="text-align:center;padding-bottom: 10px;padding-top: 20px"><code>stanserver.cn stanserver@163.cm</code></div></body>
 </body>
 </html>
