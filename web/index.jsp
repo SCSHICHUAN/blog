@@ -22,11 +22,25 @@
 </head>
 
 
-<body>
+
 <div class="wel3">
   <button class="commit">提交</button>
   <label class="wel4"><span id="total-length"></span><label id="bacUrl"></label></label>
+    <div class="longin">
+        <button class="showLogin">未登陆</button>
+    </div>
 </div>
+
+<div class="longin1">
+    <button class="mailBtn">忘记密码未注册</button>
+    <input id = "mail" placeholder="mail">
+    <input id = "mailCode" placeholder="邮寄验证码">
+    <input id = "usrName" placeholder="user">
+    <input id = "pwd" placeholder="password">
+    <input id = "repwd" placeholder="确定密码">
+</div>
+
+
 <div class="wel1">Welcome to my blog Create Space</div>
 <div class="wel2">
    <input id="blogName" placeholder="请输入博客名不能重复">
@@ -37,5 +51,45 @@
 
 <script type="text/javascript" src="/blog/js/editMain.js"></script>
 <div style="text-align:center;padding-bottom: 10px;padding-top: 20px"><code>stanserver.cn stanserver@163.com</code></div></body>
+<script>
+    $(".showLogin").click(function (e) {
+        var ele = $(".showLogin");
+        var cotent = ele.text();
+        if (cotent == "未登陆"){
+
+            ele.text('登陆');
+
+            var ele2 = $(".longin1").animate({height:'40px'});
+            $("#usrName").animate({top:'40px'});
+            $("#pwd").animate({top:'40px'});
+            $("#repwd").animate({top:'40px'});
+            $(".mailBtn").animate({top:'40px'});
+            $("#mail").animate({top:'40px'});
+            $("#mailCode").animate({top:'40px'});
+        }
+
+    })
+
+    $(".mailBtn").click(function (e) {
+        $(".showLogin").text('注册或找回密码');
+        $(e.target).text("获取邮件验证码");
+        $("#mail").animate({opacity:'1'});
+        $("#mailCode").animate({opacity:'1'});
+
+        $("#usrName").animate({right:'330px'});
+        $("#pwd").animate({right:'170px'});
+        $("#repwd").animate({right:'10px',opacity: '1'});
+
+
+    })
+
+
+
+
+
+
+
+
+</script>
 </body>
 </html>

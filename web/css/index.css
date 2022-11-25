@@ -21,6 +21,8 @@ body{
     background: rgb(50,50,50);
     color: white;
     height: 40px;
+    z-index: 2;
+    position: relative;
 }
 .wel4{
     font-size: 10px;
@@ -86,5 +88,106 @@ color:rgba(255,255,255,0.7);
     padding: 20px;
     border-radius: 3px;
     min-height: 500px;
+}
+.longin{
+    float: right;
+}
+.showLogin{
+
+    height: 20px;
+    border-radius: 3px;
+    border: none;
+    margin: 10px;
+    font-size: 10px;
+    background: rgba(255,255,255,0);
+    color: rgb(71,148,255);
+}
+
+.showLogin:hover{
+    background: rgba(71,148,255,0.5);
+    color: white;
+}
+.showLogin:active{
+    background: rgba(71,148,255,0.2);
+}
+.longin1{
+    height: 0px;
+    background: rgba(41,118,255,1);
+    display: flex;
+    justify-content: flex-end;
+    z-index: 1;
+}
+#usrName,#pwd,.mailBtn,#mail,#mailCode,#repwd{
+    position: absolute;
+    background: rgba(0,0,0,0.5);
+    height: 20px;
+    border-radius: 3px;
+    margin: 10px;
+    font-size: 10px;
+    color: white;
+    border-style: none;
+    outline-style:none;
+    top: 0px;
+}
+
+#pwd::-webkit-input-placeholder{
+
+     color:rgba(255,255,255,0.7);
+
+}
+#usrName::-webkit-input-placeholder{
+
+     color:rgba(255,255,255,0.7);
+
+}
+#mail::-webkit-input-placeholder{
+
+    color:rgba(255,255,255,0.7);
+
+}
+
+
+.mailBtn{
+    width: 100px;
+    left: 10px;
+    background-color: rgba(0,0,0,0);
+}
+.mailBtn:hover{
+    background-color: rgba(0,0,0,0.1);
+}
+.mailBtn:active{
+    background-color: rgba(0,0,0,0.5);
+}
+#mail{
+    width: 150px;
+    left: 130px;
+    opacity: 0;
+}
+#mailCode{
+    width: 130px;
+    left: 290px;
+    opacity: 0;
+}
+#mailCode::-webkit-input-placeholder{
+
+    color:rgba(255,255,255,0.7);
+
+}
+#usrName{
+    width: 150px;
+    right: 180px
+}
+#pwd{
+    width: 150px;
+    right: 10px;
+}
+#repwd{
+    width: 150px;
+    right: 150px;
+    opacity: 0;
+}
+#repwd::-webkit-input-placeholder{
+
+    color:rgba(255,255,255,0.7);
 
 }
