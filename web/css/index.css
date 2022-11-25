@@ -182,9 +182,9 @@ color:rgba(255,255,255,0.7);
     right: 10px;
 }
 #repwd{
+    top: 40px;
     width: 150px;
-    right: 150px;
-    opacity: 0;
+    right: -170px;
 }
 #repwd::-webkit-input-placeholder{
 

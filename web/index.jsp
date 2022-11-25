@@ -62,7 +62,6 @@
             var ele2 = $(".longin1").animate({height:'40px'});
             $("#usrName").animate({top:'40px'});
             $("#pwd").animate({top:'40px'});
-            $("#repwd").animate({top:'40px'});
             $(".mailBtn").animate({top:'40px'});
             $("#mail").animate({top:'40px'});
             $("#mailCode").animate({top:'40px'});
@@ -78,7 +77,7 @@
 
         $("#usrName").animate({right:'330px'});
         $("#pwd").animate({right:'170px'});
-        $("#repwd").animate({right:'10px',opacity: '1'});
+        $("#repwd").animate({top:'40px',right:'10px'});
 
 
     })
