@@ -69,7 +69,7 @@ $(".commit").click(function () {
     $.ajax({
         contentType: "application/x-www-form-urlencoded; charset=utf-8",
         type: 'post',
-        url: "/blog/addBlog",
+        url: "/blog/addBlog.sc",
         data: {
             blogName:blogName,
             totalText:totalText,
@@ -132,7 +132,7 @@ if (!(tmpName == 'undefined')){
     $.ajax({
         contentType: "application/x-www-form-urlencoded; charset=utf-8",
         type: 'post',
-        url: "/blog/edit.do",
+        url: "/blog/edit.do.sc",
         data: {
             blogName:name
         },

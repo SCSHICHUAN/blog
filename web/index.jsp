@@ -16,7 +16,6 @@
     <link href="https://cdn.bootcdn.net/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/@wangeditor/editor@latest/dist/css/style.css" rel="stylesheet">
     <script src="https://unpkg.com/@wangeditor/editor@latest/dist/index.js"></script>
-    <link href="./css/layout.css" rel="stylesheet">
     <link href="css/index.css" rel="stylesheet">
     <script type="text/javascript" src="/blog/js/jquery-1.4.2.js"></script>
 </head>
@@ -27,6 +26,7 @@
   <button class="commit">提交</button>
   <label class="wel4"><span id="total-length"></span><label id="bacUrl"></label></label>
     <div class="longin">
+        <label class="longinTips"></label>
         <button class="showLogin">未登陆</button>
     </div>
 </div>
@@ -65,28 +65,181 @@
             $(".mailBtn").animate({top:'40px'});
             $("#mail").animate({top:'40px'});
             $("#mailCode").animate({top:'40px'});
+
+        }else if(cotent == '登陆'){
+            loginAction();
+        }else if (cotent == "注册或找回密码"){
+            registerAction();
         }
 
     })
 
     $(".mailBtn").click(function (e) {
-        $(".showLogin").text('注册或找回密码');
-        $(e.target).text("获取邮件验证码");
-        $("#mail").animate({opacity:'1'});
-        $("#mailCode").animate({opacity:'1'});
 
-        $("#usrName").animate({right:'330px'});
-        $("#pwd").animate({right:'170px'});
-        $("#repwd").animate({top:'40px',right:'10px'});
+        if ($(e.target).text() == '获取邮件验证码'){
 
+            var  mail = $("#mail").val();
 
+            if(mail.length <= 0){
+                $(".longinTips").text('请输入你的邮寄！');
+            }else {
+
+                $.ajax({
+                    contentType: "application/x-www-form-urlencoded; charset=utf-8",
+                    type: 'post',
+                    url: "/blog/sendMailCodeBlog",
+                    data: {
+                        mail:mail
+                    },
+                    error: (function () {
+                        $(".longinTips").text('请求错误');
+                    }),
+                    dataType: 'text',
+                    success: (function (json) {
+                        console.log(json);
+                        if(json == "success"){
+                            $(".longinTips").text('邮寄已经发送成功！');
+                        }else {
+                            $(".longinTips").text('邮寄发送失败！');
+                        }
+                    })
+                })
+            }
+
+        }else {
+
+            $(".showLogin").text('注册或找回密码');
+            $(e.target).text("获取邮件验证码");
+            $("#mail").animate({opacity:'1'});
+            $("#mailCode").animate({opacity:'1'});
+
+            $("#usrName").animate({right:'330px'});
+            $("#pwd").animate({right:'170px'});
+            $("#repwd").animate({top:'40px',right:'10px'});
+
+        }
     })
 
 
+     function loginAction() {
+        var usr = $("#usrName").val();
+        var pwd = $("#pwd").val();
+
+
+        if(usr.length <= 0 || pwd.length <= 0){
+            $(".longinTips").text('请输入用户名或密码');
+        }else {
+            $(".longinTips").text('');
+
+            $.ajax({
+                contentType: "application/x-www-form-urlencoded; charset=utf-8",
+                type: 'post',
+                url: "/blog/loginBlog",
+                data: {
+                    usr:usr,
+                    pwd:pwd,
+                },
+                error: (function () {
+                    $(".longinTips").text('请求错误');
+                }),
+                dataType: 'text',
+                success: (function (json) {
+                    console.log(json);
+                    if(json == "success"){
+                        $(".longinTips").text('');
+                        $(".showLogin").text('已登陆');
+                        var str = "Welcome to the "+usr+" Blog Creation Space";
+                        $(".wel1").text(str);
+                        $(".longin1").remove();
+                    }else {
+                        $(".longinTips").text('账号或密码错误');
+                    }
+
+                })
+
+            })
+        }
+     }
+
+     function registerAction() {
+
+         var  mail = $("#mail").val();
+         var  mailCode = $("#mailCode").val();
+         var  usrName = $("#usrName").val();
+         var  pwd = $("#pwd").val();
+         var  repwd = $("#repwd").val();
+
+         if(mail.length <= 0
+             || mailCode.length <= 0
+             || usrName.length <= 0
+             || pwd.length <= 0
+             || repwd.length <= 0){
+
+             $(".longinTips").text('请把所有注册信息添写完！');
+         }else {
+
+             if (pwd != repwd){
+                 $(".longinTips").text('俩次输入密码不一！');
+             } else {
+
+                 $.ajax({
+                     contentType: "application/x-www-form-urlencoded; charset=utf-8",
+                     type: 'post',
+                     url: "/blog/registerBlog",
+                     data: {
+                         mail:mail,
+                         mailCode:mailCode,
+                         usrName:usrName,
+                         pwd:pwd
+                     },
+                     error: (function () {
+                         $(".longinTips").text('请求错误');
+                     }),
+                     dataType: 'text',
+                     success: (function (json) {
+                         console.log(json);
+                         if(json == "success"){
+                             $(".longinTips").text('');
+                             $(".showLogin").text('已登陆');
+                             var str = "Welcome to the "+usrName+" Blog Creation Space";
+                             $(".wel1").text(str);
+                             $(".longin1").remove();
+                         }else {
+                             $(".longinTips").text('邮寄验证码错误！');
+                         }
+
+                     })
+
+                 })
+             }
+
+         }
+
+     }
 
 
 
 
+    function getcookie(objname){//获取指定名称的cookie的值
+        var arrstr = document.cookie.split("; ");
+        for(var i = 0;i < arrstr.length;i ++){
+            var temp = arrstr[i].split("=");
+            if(temp[0] == objname) return unescape(temp[1]);
+        }
+    }
+
+    //检查用户是否已经登陆
+    function cookieLogin() {
+        var usr = getcookie("blogCookNameUsr");
+        var pwd = getcookie("blogCookNamePwd");
+
+       var usr =  $("#usrName").val(usr);
+        $("#pwd").val(pwd);
+        if(usr.length>0){
+            loginAction();
+        }
+    }
+    cookieLogin();
 
 
 </script>

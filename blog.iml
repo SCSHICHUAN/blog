@@ -24,5 +24,7 @@
     <orderEntry type="library" name="c3p0-0.9.1.2" level="project" />
     <orderEntry type="library" name="json" level="project" />
     <orderEntry type="library" name="jsoup-1.15.3" level="project" />
+    <orderEntry type="library" name="mail-1.4.7" level="project" />
+    <orderEntry type="library" name="javax.activation" level="project" />
   </component>
 </module>

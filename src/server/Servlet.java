@@ -1,9 +1,7 @@
 package server;
 
-import main.BlogList;
-import main.CreateBlog;
-import main.DeleteBlog;
-import main.EditBlog;
+import Utils.MailServer;
+import main.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,21 +18,34 @@ public class Servlet extends HttpServlet {
         System.out.println("requst path =" + path);
 
         switch (path){
-            case "/addBlog":
+            case "/addBlog.sc":
                 CreateBlog.addBlog(request,response);
             break;
             case "/list":
                 BlogList.list(request,response);
                 break;
-            case "/list.do":
+            case "/list.do.sc":
                 BlogList.blogList(request,response);
                 break;
-            case "/edit.do":
+            case "/edit.do.sc":
                 EditBlog.edit(request,response);
                 break;
-            case "/deleBlog":
+            case "/deleBlog.sc":
                 DeleteBlog.deleBlog(request,response);
                 break;
+            case "/loginBlog":
+                LoginBlog loginBlog = new LoginBlog();
+                loginBlog.login(request,response);
+                break;
+            case "/sendMailCodeBlog":
+                 RegisterBlog registerBlog = new RegisterBlog();
+                 registerBlog.sendMaliCode(request,response);
+                break;
+            case "/registerBlog":
+                RegisterBlog registerBlog2 = new RegisterBlog();
+                registerBlog2.registerBlog(request,response);
+                break;
+
         }
     }
 

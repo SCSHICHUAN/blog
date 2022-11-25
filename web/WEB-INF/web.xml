@@ -10,7 +10,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>Servlet</servlet-name>
-        <url-pattern>/addBlog</url-pattern>
+        <url-pattern>/addBlog.sc</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Servlet</servlet-name>
@@ -18,19 +18,31 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Servlet</servlet-name>
-        <url-pattern>/list.do</url-pattern>
+        <url-pattern>/list.do.sc</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Servlet</servlet-name>
-        <url-pattern>/edit</url-pattern>
+        <url-pattern>/edit.sc</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Servlet</servlet-name>
-        <url-pattern>/edit.do</url-pattern>
+        <url-pattern>/edit.do.sc</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Servlet</servlet-name>
-        <url-pattern>/deleBlog</url-pattern>
+        <url-pattern>/deleBlog.sc</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Servlet</servlet-name>
+        <url-pattern>/loginBlog</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Servlet</servlet-name>
+        <url-pattern>/sendMailCodeBlog</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Servlet</servlet-name>
+        <url-pattern>/registerBlog</url-pattern>
     </servlet-mapping>
 
 
@@ -40,7 +52,8 @@
     </filter>
     <filter-mapping>
         <filter-name>filter</filter-name>
-        <url-pattern>*</url-pattern>
+        <url-pattern>*.sc</url-pattern>
+        <url-pattern>/list</url-pattern>
         <dispatcher>REQUEST</dispatcher>
     </filter-mapping>
 

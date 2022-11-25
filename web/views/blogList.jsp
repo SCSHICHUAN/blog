@@ -32,7 +32,7 @@
         $.ajax({
             contentType: "application/x-www-form-urlencoded; charset=utf-8",
             type: 'post',
-            url: "/blog/list.do",
+            url: "/blog/list.do.sc",
             data: {},
             error: (function (e) {
                 $(".removeSelf").css({display: 'block'});
@@ -40,7 +40,6 @@
             }),
             dataType: 'json',
             success: (function (objs) {
-
                 console.log(objs);
                 showList(objs);
             })
@@ -149,7 +148,7 @@
             $.ajax({
                 contentType: "application/x-www-form-urlencoded; charset=utf-8",
                 type: 'post',
-                url: "/blog/deleBlog",
+                url: "/blog/deleBlog.sc",
                 data: {
                     blogName:deleName
                 },
