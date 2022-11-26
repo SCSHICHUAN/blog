@@ -2,6 +2,7 @@ package main;
 
 import DAO.JDBC;
 import Utils.SaveUserLogin;
+import model.Usr;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,9 +19,10 @@ public class LoginBlog {
         String pwd = (String)request.getParameter("pwd");
 
         String result = "";
-        if (Objects.equals(pwd,login(usr))){
+        Usr usr1 = login(usr);
+        if (Objects.equals(pwd,usr1.pwd)){
             SaveUserLogin saveUserLogin = new SaveUserLogin();
-            saveUserLogin.save(response,usr,pwd);
+            saveUserLogin.save(response,usr,pwd,usr1.usrID);
             result = "success";
 
         }else {
@@ -40,10 +42,11 @@ public class LoginBlog {
      * @param usr
      * @return pwd
      */
-    public  String login(String usr){
+    public  Usr login(String usr){
         Connection c  = null;
         PreparedStatement p = null;
         ResultSet resultSet = null;
+        Usr usr1 = new Usr("","","","");
 
         try {
             c = JDBC.GetConnection();
@@ -54,8 +57,10 @@ public class LoginBlog {
             resultSet = p.executeQuery();
             while (resultSet.next()){
                 String pwd = resultSet.getString("pwd");
-                System.out.print(pwd);
-                return pwd;
+                String usrID = resultSet.getString("usrID");
+
+                usr1 = new Usr(usrID,"",pwd,"");
+                System.out.print(usr1);
             }
 
         }catch (Exception e){
@@ -64,7 +69,8 @@ public class LoginBlog {
             JDBC.close(p,c);
         }
 
-        return "";
+        return usr1;
+
     }
 
 

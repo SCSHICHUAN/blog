@@ -29,9 +29,9 @@ public class Filter implements javax.servlet.Filter {
         System.out.println("+++++++Filter+++++++"+path);
 
 
-        String cookieUsr = loginStatuCookis(request,"blogCookNameUsr");
-        String cookiePwd = loginStatuCookis(request,"blogCookNamePwd");
-
+        SaveUserLogin saveUserLogin = new SaveUserLogin();
+        String cookieUsr = saveUserLogin.loginCookis(request,"blogCookNameUsr");
+        String cookiePwd = saveUserLogin.loginCookis(request,"blogCookNamePwd");
 
         //已经登陆
         if (Objects.equals(cookieUsr+cookiePwd,login(cookieUsr)) && login(cookieUsr).length() > 0){
@@ -40,38 +40,7 @@ public class Filter implements javax.servlet.Filter {
             request.getRequestDispatcher("/index.jsp").forward(request,response);
         }
 
-
-
     }
-
-
-    private String loginStatuCookis(HttpServletRequest request,String key){
-
-        String result = "";
-        try {
-            // 获取客户端cookie
-            request.setCharacterEncoding("utf-8");
-            Cookie[] cookies = request.getCookies();
-            if (cookies != null) {
-                for (Cookie c : cookies) {
-                    if (Objects.equals(c.getName(),key)){
-                        result = c.getValue();
-                    }
-                    System.out.println(c.getName() + "--->" + c.getValue());
-
-                }
-            }
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
-        return result;
-
-    }
-
-
-
 
     /**
      *

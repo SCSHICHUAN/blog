@@ -3,10 +3,12 @@ package main;
 import DAO.JDBC;
 import Utils.MailServer;
 
+import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.Objects;
 import java.util.Random;
 
+import Utils.SaveUserLogin;
 import model.Usr;
 
 import javax.servlet.http.HttpServletRequest;
@@ -61,9 +63,25 @@ public class RegisterBlog {
         String relust = "";
         String locatCode = (String) request.getSession().getAttribute("code");
         if (Objects.equals(mailCode,locatCode)){
-            Usr usr = new Usr(usrID,usrName,pwd,mail);
-            addUsr(usr);
+
+
             relust = "success";
+             //保存登陆状态
+            SaveUserLogin saveUserLogin = new SaveUserLogin();
+
+
+            Usr oldUsr = haveUsr(mail);
+            if(Objects.equals(mail,oldUsr.mail)){
+                Usr usr = new Usr(oldUsr.usrID,usrName,pwd,oldUsr.mail);
+                saveUserLogin.save(response,usrName,pwd,oldUsr.usrID);
+                updateUsr(usr);
+            }else {
+                Usr usr = new Usr(usrID,usrName,pwd,mail);
+                saveUserLogin.save(response,usrName,pwd,usrID);
+                addUsr(usr);
+            }
+
+
         }else {
             relust = "Faile";
         }
@@ -85,7 +103,6 @@ public class RegisterBlog {
     public  boolean addUsr(Usr usr){
         Connection c  = null;
         PreparedStatement p = null;
-        Date date = new Date();
 
         try {
             c = JDBC.GetConnection();
@@ -110,6 +127,81 @@ public class RegisterBlog {
             JDBC.close(p,c);
         }
     }
+
+
+    /**
+     * 跟新用户信息
+     * @param usr
+     * @return
+     */
+    public  boolean updateUsr(Usr usr){
+        Connection c  = null;
+        PreparedStatement p = null;
+
+        try {
+            c = JDBC.GetConnection();
+            String sql = "update usr SET usr = ?,pwd = ? where mail = ?";
+            p = c.prepareStatement(sql);
+            p.setObject(1,usr.usrID);
+            p.setObject(2,usr.usr);
+            p.setObject(3,usr.mail);
+
+
+            int rows = p.executeUpdate();
+            if (rows > 0){
+                return true;
+            }else {
+                return false;
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }finally {
+            JDBC.close(p,c);
+        }
+    }
+
+
+    /**
+     * 查下用户已经存在
+     * @param mail
+     * @return Usr
+     */
+    public  Usr haveUsr(String mail){
+        Connection c  = null;
+        PreparedStatement p = null;
+        ResultSet resultSet = null;
+
+        Usr usr = new Usr("","","","");
+
+        if (mail.length()< 0) return usr;
+
+        try {
+            c = JDBC.GetConnection();
+            String sql = "select * from usr where mail = ?";
+            p = c.prepareStatement(sql);
+            p.setObject(1,usr);
+
+            resultSet = p.executeQuery();
+            while (resultSet.next()){
+                String pwd = resultSet.getString("pwd");
+                String tmpUsr = resultSet.getString("usr");
+                String uId = resultSet.getString("usrId");
+                String mali = resultSet.getString("mail");
+                usr = new Usr(uId,tmpUsr,pwd,mail);
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            JDBC.close(p,c);
+        }
+
+        return usr;
+    }
+
+
 
     /**
      * 此方法用户产生随机数字母和数字

@@ -92,7 +92,21 @@ color:rgba(255,255,255,0.7);
 .longin{
     float: right;
 }
-.showLogin{
+.world:hover{
+    background: rgba(71,148,255,0.5);
+    color: white;
+}
+.world:active{
+    background: rgba(71,148,255,0.2);
+}
+.blogs:hover{
+    background: rgba(71,148,255,0.5);
+    color: white;
+}
+.blogs:active{
+    background: rgba(71,148,255,0.2);
+}
+.showLogin,.blogs,.world{
 
     height: 20px;
     border-radius: 3px;
@@ -183,8 +197,9 @@ color:rgba(255,255,255,0.7);
 }
 #repwd{
     top: 40px;
-    width: 150px;
-    right: -170px;
+    width: 0px;
+    right: 0px;
+    opacity: 0;
 }
 #repwd::-webkit-input-placeholder{
 

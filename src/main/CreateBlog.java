@@ -2,6 +2,7 @@ package main;
 
 
 import DAO.JDBC;
+import Utils.SaveUserLogin;
 import model.BlogName;
 import org.json.JSONObject;
 
@@ -21,10 +22,13 @@ import Share.Share;
 
 public class CreateBlog {
 
+    private static HttpServletRequest  request;
     private static HttpServletResponse response;
 
 
+
     public static void addBlog(HttpServletRequest req,HttpServletResponse res){
+        request = req;
         response = res;
 
         String html = (String) req.getParameter("html");
@@ -62,7 +66,7 @@ public class CreateBlog {
     }
 
 
-    //保存创建blog
+    //保存创建blog文件 和保存数据库记录
     private static void saveBlogHtml(String blogName,String totalText,String html,boolean b){
 
 
@@ -146,14 +150,8 @@ public class CreateBlog {
             //关闭此文件输出流并释放与此流有关的所有系统资源
             fop.close();
 
-            if (b){
-                //mysql save name
-                BlogName blogName1 = new BlogName(null,"1","test",blogName,null,null);
-                AddBlogName(blogName1);
-            }else {
-                updateTime(blogName);
-            }
 
+            saveBlogToSql(blogName,b);
             responesToCline(response,blogName);
 
         } catch (Exception e) {
@@ -161,6 +159,32 @@ public class CreateBlog {
         }
 
     }
+
+    /**
+     * 保存记录到数据库
+     * @param name
+     * @param update
+     */
+    private static void saveBlogToSql(String name,boolean update){
+
+
+        SaveUserLogin saveUserLogin = new SaveUserLogin();
+        String cookieUsr = saveUserLogin.loginCookis(request,"blogCookNameUsr");
+        String cookieID = saveUserLogin.loginCookis(request,"blogCookNameID");
+
+
+
+        if (update){
+            //mysql save name
+            BlogName blogName1 = new BlogName(null,cookieID,cookieUsr,name,null,null);
+            AddBlogName(blogName1);
+        }else {
+            updateTime(name);
+        }
+
+    }
+
+
 
     //保存成功后返回
     private static void responesToCline(HttpServletResponse response, String url) {

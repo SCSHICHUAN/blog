@@ -26,6 +26,8 @@
   <button class="commit">提交</button>
   <label class="wel4"><span id="total-length"></span><label id="bacUrl"></label></label>
     <div class="longin">
+        <button class="world">world</button>
+        <button class="blogs">blos</button>
         <label class="longinTips"></label>
         <button class="showLogin">未登陆</button>
     </div>
@@ -115,7 +117,7 @@
 
             $("#usrName").animate({right:'330px'});
             $("#pwd").animate({right:'170px'});
-            $("#repwd").animate({top:'40px',right:'10px'});
+            $("#repwd").animate({top:'40px',right:'10px',width:'150px',opacity:1});
 
         }
     })

@@ -13,6 +13,8 @@
           <element id="library" level="project" name="servlet-api" />
           <element id="library" level="project" name="json" />
           <element id="library" level="project" name="jsoup-1.15.3" />
+          <element id="library" level="project" name="mail-1.4.7" />
+          <element id="library" level="project" name="javax.activation" />
         </element>
       </element>
     </root>
