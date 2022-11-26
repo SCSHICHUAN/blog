@@ -109,10 +109,11 @@ public class CreateBlog {
         String htmlTmp = "<!DOCTYPE html>\n" +
                 "<html>\n" +
                 "<head>\n" +
+                "<link rel=\"icon\" href=\"https://stanserver.cn:444/blog/108.png\">\n"+
                 "<link href=\"https://cdn.jsdelivr.net/npm/prismjs@v1.x/themes/prism.css\" rel=\"stylesheet\" />\n" +
                 "<script src=\"https://cdn.jsdelivr.net/npm/prismjs@v1.x/components/prism-core.min.js\"></script>\n" +
                 "<script src=\"https://cdn.jsdelivr.net/npm/prismjs@v1.x/plugins/autoloader/prism-autoloader.min.js\"></script>" +
-                "\t<title>石川博客</title>\n" +
+                "\t<title>"+blogName+"</title>\n" +
                 "</head>\n" +
                 "<body style=\"margin: 0px;background-color: rgb(240,240,240);\">\n" +
                 blogHeaderTitle+
