@@ -36,7 +36,7 @@ public class EditBlog {
         Document doc = Jsoup.parse(htmlStr);
         //获取body元素，获取class="fc"的table元素
         Elements edit =  doc.getElementsByClass("edit");
-        System.out.print(edit.toString());
+//        System.out.print(edit.toString());
 
         JSONObject json = new JSONObject();
         json.put("blogHtml",edit.toString());

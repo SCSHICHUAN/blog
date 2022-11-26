@@ -32,7 +32,7 @@ public class Filter implements javax.servlet.Filter {
         HttpServletRequest request = (HttpServletRequest)req;
         HttpServletResponse response = (HttpServletResponse)resp;
         String path = (String) request.getServletPath();
-        System.out.println("+++++++Filter+++++++"+path);
+        System.out.println("+++++++Filter+++++++"+path+"+++++++Filter+++++++");
 
 
 
@@ -97,7 +97,6 @@ public class Filter implements javax.servlet.Filter {
             while (resultSet.next()){
                 String pwd = resultSet.getString("pwd");
                 String tmpUsr = resultSet.getString("usr");
-                System.out.print(tmpUsr+pwd);
                 return tmpUsr+pwd;
             }
 

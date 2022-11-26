@@ -143,7 +143,7 @@ public class CreateBlog {
                 file.createNewFile();
             }
             byte[] contentInBytes = htmlTmp.getBytes();
-            System.out.println("contentInBytes===="+contentInBytes);
+//            System.out.println("contentInBytes===="+contentInBytes);
             fop.write(contentInBytes);
             //先清空缓冲区数据,保证缓存清空输出
             fop.flush();
@@ -251,7 +251,7 @@ public class CreateBlog {
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()){
                 String tmpBlogName = resultSet.getString("blogName");
-                System.out.print(tmpBlogName);
+//                System.out.print(tmpBlogName);
                 return true;
             }
 

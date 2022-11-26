@@ -60,7 +60,6 @@ public class LoginBlog {
                 String usrID = resultSet.getString("usrID");
 
                 usr1 = new Usr(usrID,"",pwd,"");
-                System.out.print(usr1);
             }
 
         }catch (Exception e){
