@@ -21,6 +21,7 @@
     <%--<button class="cancel">取消</button>--%>
     <%--<button class="confirm">删除</button>--%>
 <%--</div>--%>
+
 <div class="headTxt">List of blogs with <span class="allBlogs"></span> posts</div>
 <div class="list"></div>
 <script>
@@ -56,6 +57,10 @@
             "<div class=\"item\" deleName =\""+objs[i].blogName+"\">"
             +"<table>\n"
             +"<tr>\n"
+
+            +"<th class='t0'>\n" +
+             "<div class=\"usr\">"+objs[i].usrName+"</div>\n" +
+            "</th>"
 
             +"<th class='t1'>"
                +"<a class='info'>"

@@ -17,8 +17,8 @@ body{
 
 .item{
     width: 95%;
-    padding: 5px;
-    margin: 10px;
+    padding: 1px;
+    margin: 5px;
     background-color: white;
     border-radius: 2px;
 }
@@ -33,7 +33,7 @@ table{
 }
 .headName{
     /*font-size: 20px;*/
-    color: black;
+    color: rgb(60,60,60);
     font-weight:bold;
 }
 a{
@@ -71,7 +71,7 @@ a{
 
 .time,.timeEdit{
     font-weight: lighter;
-    font-size: 5px;
+    font-size: 10px;
     /*display: inline;*/
     color: rgb(60,60,60);
 }
@@ -96,17 +96,18 @@ a{
     /*border: 1px solid rgb(216,13,11);*/
     background: rgba(216,13,11,0.2);
     border-radius: 2px;
-    /*box-shadow: 0 0 50px rgba(0,0,0,0.2);*/
-    /*height: 100px;*/
-    /*position: fixed;*/
-    /*margin: auto;*/
-    /*top: 0;*/
-    /*bottom: 0;*/
-    /*right: 0;*/
-    /*left: 0;*/
     color: black;
     text-align: right;
     /*z-index: 999;*/
     /*visibility: hidden;*/
 
+}
+.t0{
+    width: 10%;
+    /*background: rgb(71,148,255);*/
+    color: black;
+    margin: 5px;
+    border-radius: 5px;
+    text-align: left;
+    padding-left: 10px;
 }
