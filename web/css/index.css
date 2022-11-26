@@ -1,5 +1,7 @@
 body{
     background-color: rgb(240,240,240);
+    font-family: "微软雅黑";
+    min-width: 1024px;
 }
 .wel1,.wel2,.wel3{
     background: rgb(71,148,255);

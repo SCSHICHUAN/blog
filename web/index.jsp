@@ -83,7 +83,8 @@
             var  mail = $("#mail").val();
 
             if(mail.length <= 0){
-                $(".longinTips").text('请输入你的邮寄！');
+                $(".longinTips").text('请输入你的邮件！');
+                alert("请输入你的邮件！");
             }else {
 
                 $.ajax({
@@ -100,9 +101,11 @@
                     success: (function (json) {
                         console.log(json);
                         if(json == "success"){
-                            $(".longinTips").text('邮寄已经发送成功！');
+                            $(".longinTips").text('邮件已经发送成功！');
+                            alert("邮件已经发送成功！")
                         }else {
-                            $(".longinTips").text('邮寄发送失败！');
+                            $(".longinTips").text('邮件发送失败！');
+                            alert("邮件发送失败");
                         }
                     })
                 })
@@ -248,10 +251,12 @@
 
 
     $(".world").click(function () {
-        window.open("http://localhost:8080/blog/list","_blank");
+        // window.open("http://localhost:8080/blog/list","_blank");
+        window.open("https://stanserver.cn/blog/list","_blank");
     })
     $(".blogs").click(function () {
-        window.open("http://localhost:8080/blog/mylist","_blank");
+        // window.open("http://localhost:8080/blog/mylist","_blank");
+        window.open("https://stanserver.cn/blog/mylist","_blank");
     })
 
 

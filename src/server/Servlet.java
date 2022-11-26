@@ -24,7 +24,7 @@ public class Servlet extends HttpServlet {
             case "/list":
                 BlogList.list(request,response,"views/blogList.jsp");
                 break;
-            case "/list.do.sc":
+            case "/list.do":
                 BlogList.blogList(request,response,"world");
                 break;
             case "/edit.do.sc":

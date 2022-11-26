@@ -77,7 +77,7 @@ $(".commit").click(function () {
             canEdit:canEdit
         },
         error: (function () {
-            $(".removeSelf").css({display: 'block'});
+            alert("你还没有登陆，或者请求失败");
         }),
         dataType: 'json',
         success: (function (json) {
@@ -141,7 +141,7 @@ if (!(tmpName == 'undefined')){
             blogName:name
         },
         error: (function () {
-            $(".removeSelf").css({display: 'block'});
+            alert("你还没有登陆，或者请求失败");
         }),
         dataType: 'json',
         success: (function (json) {

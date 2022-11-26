@@ -30,7 +30,7 @@
         $.ajax({
             contentType: "application/x-www-form-urlencoded; charset=utf-8",
             type: 'post',
-            url: "/blog/list.do.sc",
+            url: "/blog/list.do",
             data: {},
             error: (function (e) {
                 $(".removeSelf").css({display: 'block'});
@@ -72,8 +72,8 @@
 
             +"<th class='t3'>"
                +"<div class='bb'>"
-               +"<button class=\"dele\" deleName =\""+objs[i].blogName+"\">删除</button>"
-               +"<button class=\"edit\" blogName =\""+objs[i].blogName+"\">编辑</button>"
+               // +"<button class=\"dele\" deleName =\""+objs[i].blogName+"\">删除</button>"
+               +"<button class=\"edit\" blogName =\""+objs[i].blogName+"\">复制</button>"
                +"</div>"
             +"</th>\n"
 
@@ -109,7 +109,7 @@
 
 
              var ele =  "<div class=\"editAlter\" alter=\""+delElem+"\">\n" +
-                 "    <label class='blogDD'>删除博客:</label>\n" +
+                 // "    <label class='blogDD'>删除博客:</label>\n" +
                  "    <label class=\"deName\">"+delElem+"</label>\n" +
                  "    <input type=\"text\" class=\"inputName\" placeholder=\"博客名字\">\n" +
                  "    <button class=\"cancel\" ddName=\""+delElem+"\">取消</button>\n" +
@@ -148,7 +148,7 @@
                     blogName:deleName
                 },
                 error: (function () {
-                    $(".removeSelf").css({display: 'block'});
+                    alert("你还没有登陆，或者请求失败");
                 }),
                 dataType: 'json',
                 success: (function (json) {

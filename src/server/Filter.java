@@ -71,7 +71,7 @@ public class Filter implements javax.servlet.Filter {
 
         }else {
             //没有登陆
-            request.getRequestDispatcher("/index.jsp").forward(request,response);
+            request.getRequestDispatcher("/index.jsp?statu=noself").forward(request,response);
         }
 
     }

@@ -18,7 +18,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Servlet</servlet-name>
-        <url-pattern>/list.do.sc</url-pattern>
+        <url-pattern>/list.do</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Servlet</servlet-name>
@@ -61,7 +61,7 @@
     <filter-mapping>
         <filter-name>filter</filter-name>
         <url-pattern>*.sc</url-pattern>
-        <url-pattern>/list</url-pattern>
+        <!--<url-pattern>/list</url-pattern>-->
         <url-pattern>/mylist</url-pattern>
         <dispatcher>REQUEST</dispatcher>
     </filter-mapping>
