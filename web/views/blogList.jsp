@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>我的列表</title>
+    <title>世界列表</title>
     <link rel="icon" href="img/108-1.png">
     <link rel="stylesheet" href="css/list.css">
 </head>
