@@ -1,6 +1,7 @@
 package main;
 
 import DAO.JDBC;
+import Utils.SaveUserLogin;
 import model.BlogName;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -17,24 +18,37 @@ public class BlogList {
 
 
 
-    public static void list(HttpServletRequest request,HttpServletResponse response){
+    public static void list(HttpServletRequest request,HttpServletResponse response,String url){
+
         try {
-            request.getRequestDispatcher("/views/blogList.jsp").forward(request,response);
+            request.getRequestDispatcher(url).forward(request,response);
         }catch (Exception e){
             e.printStackTrace();
         }
     }
 
-    public static void blogList(HttpServletRequest request, HttpServletResponse response){
+    public static void blogList(HttpServletRequest request, HttpServletResponse response,String type){
+
+
+        SaveUserLogin saveUserLogin = new SaveUserLogin();
+        String usrID = saveUserLogin.loginCookis(request,"blogCookNameID");
 
 
 
-        JSONArray jsonArray =  ArrayListTOJSONarray(getBlogs());
+        JSONArray jsonArray = new JSONArray();
+        if(Objects.equals(type,"world")){
+              jsonArray =  ArrayListTOJSONarray(getBlogs());
+        }else if (Objects.equals(type,"my")){
+            jsonArray =  ArrayListTOJSONarray(getBlogs(usrID));
+        }
+
+
         try {
             response.getOutputStream().write(jsonArray.toString().getBytes("utf8"));
         }catch (Exception e){
             e.printStackTrace();
         }
+
     }
 
 
@@ -63,8 +77,6 @@ public class BlogList {
 
 
     /**
-     *
-     * @param blogName
      * @return all blog list
      */
     private static ArrayList<BlogName> getBlogs(){
@@ -102,5 +114,48 @@ public class BlogList {
 
         return null;
     }
+
+
+
+    /**
+     * @return all blog list
+     */
+    private static ArrayList<BlogName> getBlogs(String usrID){
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        ArrayList<BlogName> names = new ArrayList<>();
+
+        try {
+            connection = JDBC.GetConnection();
+            String sql = "select * from blogName where usrID = ? order by createDate desc";
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setObject(1,usrID);
+
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                BlogName blogName = new BlogName(
+                        resultSet.getString("id"),
+                        resultSet.getString("usrID"),
+                        resultSet.getString("usrName"),
+                        resultSet.getString("blogName"),
+                        resultSet.getString("createDate"),
+                        resultSet.getString("updateDate"));
+                if (Objects.equals(resultSet.getString("updateDate"),null)){
+                    blogName.updateDate = "无";
+                }
+                names.add(blogName);
+            }
+            return names;
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            JDBC.close(preparedStatement,connection);
+        }
+
+        return null;
+    }
+
 
 }

@@ -15,11 +15,11 @@
 <body>
 <script type="text/javascript" src="/blog/js/jquery-1.4.2.js"></script>
 <%--<div class="editAlter">--%>
-    <%--<label>删除博客</label>--%>
-    <%--<label class="deName"></label>--%>
-    <%--<input type="text" class="inputName" placeholder="博客名字">--%>
-    <%--<button class="cancel">取消</button>--%>
-    <%--<button class="confirm">删除</button>--%>
+<%--<label>删除博客</label>--%>
+<%--<label class="deName"></label>--%>
+<%--<input type="text" class="inputName" placeholder="博客名字">--%>
+<%--<button class="cancel">取消</button>--%>
+<%--<button class="confirm">删除</button>--%>
 <%--</div>--%>
 <div class="headTxt">List of blogs with <span class="allBlogs"></span> posts</div>
 <div class="list"></div>
@@ -30,7 +30,7 @@
         $.ajax({
             contentType: "application/x-www-form-urlencoded; charset=utf-8",
             type: 'post',
-            url: "/blog/list.do.sc",
+            url: "/blog/mylist.do.sc",
             data: {},
             error: (function (e) {
                 $(".removeSelf").css({display: 'block'});
@@ -52,34 +52,34 @@
         var html = "";
         for(var i =0;i<objs.length;i++){
             var url = "https://stanserver.cn:444/blog/"+objs[i].blogName+".html";
-              html +=
-            "<div class=\"item\" deleName =\""+objs[i].blogName+"\">"
-            +"<table>\n"
-            +"<tr>\n"
+            html +=
+                "<div class=\"item\" deleName =\""+objs[i].blogName+"\">"
+                +"<table>\n"
+                +"<tr>\n"
 
-            +"<th class='t1'>"
-               +"<a class='info'>"
-               +"<a\ class=\"headName\">"+objs[i].blogName+"</a>"
-               +"<br/>"
-                  +"<a href='"+url+"'>"+url+"</a>"
-               +"</div>"
-            +"</th>\n"
+                +"<th class='t1'>"
+                +"<a class='info'>"
+                +"<a\ class=\"headName\">"+objs[i].blogName+"</a>"
+                +"<br/>"
+                +"<a href='"+url+"'>"+url+"</a>"
+                +"</div>"
+                +"</th>\n"
 
-            +"<th class='t2'>"
-                  +"<div class='time'>创建:"+objs[i].createDate+"</div>"
-                  +"<div class='timeEdit'> 修改:"+objs[i].updateDate+"</div>"
-            +"</th>"
+                +"<th class='t2'>"
+                +"<div class='time'>创建:"+objs[i].createDate+"</div>"
+                +"<div class='timeEdit'> 修改:"+objs[i].updateDate+"</div>"
+                +"</th>"
 
-            +"<th class='t3'>"
-               +"<div class='bb'>"
-               +"<button class=\"dele\" deleName =\""+objs[i].blogName+"\">删除</button>"
-               +"<button class=\"edit\" blogName =\""+objs[i].blogName+"\">编辑</button>"
-               +"</div>"
-            +"</th>\n"
+                +"<th class='t3'>"
+                +"<div class='bb'>"
+                +"<button class=\"dele\" deleName =\""+objs[i].blogName+"\">删除</button>"
+                +"<button class=\"edit\" blogName =\""+objs[i].blogName+"\">编辑</button>"
+                +"</div>"
+                +"</th>\n"
 
-            +"</tr>\n"
-            +"</table>"
-            +"</div>";
+                +"</tr>\n"
+                +"</table>"
+                +"</div>";
         }
 
         $(".allBlogs").html(objs.length);
@@ -91,6 +91,11 @@
     function bindButton(){
 
 
+
+
+        /**
+         * 编辑
+         */
         $(".edit").click(function (e) {
             var blogName = $(e.target).attr('blogName');
             var origin = window.location.origin;
@@ -98,28 +103,28 @@
             window.open(origin+"/blog/?name="+blogName,"_blank");
         });
 
-
-
-
+        /**
+           删除
+         */
         $(".dele").click(function (e) {
-           var delElem = $(e.target).attr('deleName');
+            var delElem = $(e.target).attr('deleName');
 
             var removeEl = $('[alter="'+delElem+'"]');
             removeEl.remove();
 
 
-             var ele =  "<div class=\"editAlter\" alter=\""+delElem+"\">\n" +
-                 "    <label class='blogDD'>删除博客:</label>\n" +
-                 "    <label class=\"deName\">"+delElem+"</label>\n" +
-                 "    <input type=\"text\" class=\"inputName\" placeholder=\"博客名字\">\n" +
-                 "    <button class=\"cancel\" ddName=\""+delElem+"\">取消</button>\n" +
-                 "    <button class=\"confirm\" ddName=\""+delElem+"\">删除</button>\n" +
-                 "</div>";
+            var ele =  "<div class=\"editAlter\" alter=\""+delElem+"\">\n" +
+                "    <label class='blogDD'>删除博客:</label>\n" +
+                "    <label class=\"deName\">"+delElem+"</label>\n" +
+                "    <input type=\"text\" class=\"inputName\" placeholder=\"博客名字\">\n" +
+                "    <button class=\"cancel\" ddName=\""+delElem+"\">取消</button>\n" +
+                "    <button class=\"confirm\" ddName=\""+delElem+"\">删除</button>\n" +
+                "</div>";
 
-             var item =  $(e.target).parents('[deleName="'+delElem+'"]');
-             item.after(ele);
-             console.log(item);
-             bundClickDele();
+            var item =  $(e.target).parents('[deleName="'+delElem+'"]');
+            item.after(ele);
+            console.log(item);
+            bundClickDele();
 
         });
 
@@ -161,8 +166,6 @@
                         var editAlter = $("[alter=\'"+deleName+"\']");;
                         editAlter.remove();
 
-                    }else if(json.result == "noself") {
-                        alert("不是你的文章不能删除！");
                     }
                 })
 

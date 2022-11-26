@@ -44,6 +44,14 @@
         <servlet-name>Servlet</servlet-name>
         <url-pattern>/registerBlog</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Servlet</servlet-name>
+        <url-pattern>/mylist</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Servlet</servlet-name>
+        <url-pattern>/mylist.do.sc</url-pattern>
+    </servlet-mapping>
 
 
     <filter>
@@ -54,6 +62,7 @@
         <filter-name>filter</filter-name>
         <url-pattern>*.sc</url-pattern>
         <url-pattern>/list</url-pattern>
+        <url-pattern>/mylist</url-pattern>
         <dispatcher>REQUEST</dispatcher>
     </filter-mapping>
 

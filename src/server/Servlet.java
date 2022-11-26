@@ -22,10 +22,10 @@ public class Servlet extends HttpServlet {
                 CreateBlog.addBlog(request,response);
             break;
             case "/list":
-                BlogList.list(request,response);
+                BlogList.list(request,response,"views/blogList.jsp");
                 break;
             case "/list.do.sc":
-                BlogList.blogList(request,response);
+                BlogList.blogList(request,response,"world");
                 break;
             case "/edit.do.sc":
                 EditBlog.edit(request,response);
@@ -45,8 +45,16 @@ public class Servlet extends HttpServlet {
                 RegisterBlog registerBlog2 = new RegisterBlog();
                 registerBlog2.registerBlog(request,response);
                 break;
+            case "/mylist":
+                BlogList.list(request,response,"views/mylist.jsp");
+                break;
+            case "/mylist.do.sc":
+                BlogList.blogList(request,response,"my");
+
+
 
         }
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

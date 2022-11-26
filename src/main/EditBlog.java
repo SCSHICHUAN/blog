@@ -1,24 +1,33 @@
 package main;
 
 import Share.Share;
+import Utils.SaveUserLogin;
 import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import javax.servlet.Filter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Objects;
+
+import static server.Filter.usrAction;
 
 public class EditBlog {
     public static void edit(HttpServletRequest request, HttpServletResponse response){
 
 
 
-        String blogName = (String) request.getParameter("blogName");
 
+
+        String blogName = (String)request.getParameter("blogName");
+        String usrId  = usrAction(blogName);
+        SaveUserLogin saveUserLogin = new SaveUserLogin();
+        String cookieID = saveUserLogin.loginCookis(request,"blogCookNameID");
 
         String filePath = Share.fileHome()+blogName+".html";
         //读取.html文件为字符串
@@ -28,19 +37,23 @@ public class EditBlog {
         //获取body元素，获取class="fc"的table元素
         Elements edit =  doc.getElementsByClass("edit");
         System.out.print(edit.toString());
-       try {
-           JSONObject json = new JSONObject();
-           json.put("blogHtml",edit.toString());
 
-           try {
-               response.getOutputStream().write(json.toString().getBytes("utf8"));
-           }catch (Exception e){
-               e.printStackTrace();
-           }
+        JSONObject json = new JSONObject();
+        json.put("blogHtml",edit.toString());
 
-       }catch (Exception e){
-           e.printStackTrace();
-       }
+
+        if (Objects.equals(cookieID,usrId)){
+            json.put("result","success");
+        }else {
+            json.put("resul","noself");
+        }
+
+
+        try {
+            response.getOutputStream().write(json.toString().getBytes("utf8"));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
 
 

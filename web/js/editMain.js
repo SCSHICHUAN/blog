@@ -91,6 +91,8 @@ $(".commit").click(function () {
                     createBlogSuccess(json);
                     $("#blogName").attr('disabled','disabled');
                     canEdit = 'yes';
+                case "creatBlogNOlogin":
+                    $("#total-length").html("你还没有登陆");
             }
 
         })
@@ -107,7 +109,9 @@ $(".commit").click(function () {
 })
 
 
-
+/**
+ * 编辑跳转过来
+ **/
 var search = window.location.search;//获取参数；
 var name = getSearchString('name', search); //结果：18
 //key(需要检索的键） url（传入的需要分割的url地址，例：?id=2&age=18）
@@ -142,10 +146,19 @@ if (!(tmpName == 'undefined')){
         dataType: 'json',
         success: (function (json) {
             console.log(json);
+
             var  str = return2Br(json.blogHtml);
             editor.dangerouslyInsertHtml(json.blogHtml);
-            $("#blogName").val(tmpName).attr('disabled','disabled');
-            canEdit = 'yes';
+
+
+            if(json.result == "success"){
+                $("#blogName").val(tmpName).attr('disabled','disabled');
+                canEdit = 'yes';
+            }else if(json.result == "noself"){
+                $("#blogName").val("");
+                canEdit = 'no';
+            }
+
         })
     })
 }

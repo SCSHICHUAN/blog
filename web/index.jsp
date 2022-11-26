@@ -158,7 +158,6 @@
                     }
 
                 })
-
             })
         }
      }
@@ -220,8 +219,11 @@
      }
 
 
-
-
+    /**
+     * 查下用户登陆信息
+     * @param objname
+     * @returns {string}
+     */
     function getcookie(objname){//获取指定名称的cookie的值
         var arrstr = document.cookie.split("; ");
         for(var i = 0;i < arrstr.length;i ++){
@@ -242,6 +244,15 @@
         }
     }
     cookieLogin();
+
+
+
+    $(".world").click(function () {
+        window.open("http://localhost:8080/blog/list","_blank");
+    })
+    $(".blogs").click(function () {
+        window.open("http://localhost:8080/blog/mylist","_blank");
+    })
 
 
 </script>
