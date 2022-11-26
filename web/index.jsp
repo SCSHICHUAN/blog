@@ -180,10 +180,12 @@
              || repwd.length <= 0){
 
              $(".longinTips").text('请把所有注册信息添写完！');
+             alert('请把所有注册信息添写完！');
          }else {
 
              if (pwd != repwd){
                  $(".longinTips").text('俩次输入密码不一！');
+                 alert('俩次输入密码不一！');
              } else {
 
                  $.ajax({
@@ -209,7 +211,7 @@
                              $(".wel1").text(str);
                              $(".longin1").remove();
                          }else {
-                             $(".longinTips").text('邮寄验证码错误！');
+                             $(".longinTips").text('邮件验证码错误！');
                          }
 
                      })

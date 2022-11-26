@@ -92,7 +92,7 @@ $(".commit").click(function () {
                     $("#blogName").attr('disabled','disabled');
                     canEdit = 'yes';
                 case "creatBlogNOlogin":
-                    $("#total-length").html("你还没有登陆");
+                    // $("#total-length").html("你还没有登陆");
             }
 
         })
