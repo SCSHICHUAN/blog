@@ -113,6 +113,26 @@ public class CreateBlog {
                 "<link href=\"https://cdn.jsdelivr.net/npm/prismjs@v1.x/themes/prism.css\" rel=\"stylesheet\" />\n" +
                 "<script src=\"https://cdn.jsdelivr.net/npm/prismjs@v1.x/components/prism-core.min.js\"></script>\n" +
                 "<script src=\"https://cdn.jsdelivr.net/npm/prismjs@v1.x/plugins/autoloader/prism-autoloader.min.js\"></script>" +
+                "<style type=\"text/css\">\n" +
+                "blockquote {\n" +
+                "    background-color: #f5f2f0;\n" +
+                "    border-left: 8px solid #B4D5FF;\n" +
+                "    display: block;\n" +
+                "    font-size: 100%;\n" +
+                "    line-height: 1.5;\n" +
+                "    margin: 10px 0;\n" +
+                "    padding: 10px;\n" +
+                "}\n" +
+                "table, tr, th,td {\n" +
+                " \tpadding: 5px;\n" +
+                "    border-collapse: collapse;\n" +
+                "    border: #ccc 1px solid;\n" +
+                "}\n" +
+                "th{\n" +
+                "\tbackground-color: #f5f2f0;\n" +
+                "}\n" +
+                "\n" +
+                "</style>"+
                 "\t<title>"+blogName+"</title>\n" +
                 "</head>\n" +
                 "<body style=\"margin: 0px;background-color: rgb(240,240,240);\">\n" +
