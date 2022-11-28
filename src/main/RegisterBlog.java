@@ -142,8 +142,8 @@ public class RegisterBlog {
             c = JDBC.GetConnection();
             String sql = "update usr SET usr = ?,pwd = ? where mail = ?";
             p = c.prepareStatement(sql);
-            p.setObject(1,usr.usrID);
-            p.setObject(2,usr.usr);
+            p.setObject(1,usr.usr);
+            p.setObject(2,usr.pwd);
             p.setObject(3,usr.mail);
 
 
@@ -181,15 +181,15 @@ public class RegisterBlog {
             c = JDBC.GetConnection();
             String sql = "select * from usr where mail = ?";
             p = c.prepareStatement(sql);
-            p.setObject(1,usr);
+            p.setObject(1,mail);
 
             resultSet = p.executeQuery();
             while (resultSet.next()){
                 String pwd = resultSet.getString("pwd");
                 String tmpUsr = resultSet.getString("usr");
                 String uId = resultSet.getString("usrId");
-                String mali = resultSet.getString("mail");
-                usr = new Usr(uId,tmpUsr,pwd,mail);
+                String tmpMali = resultSet.getString("mail");
+                usr = new Usr(uId,tmpUsr,pwd,tmpMali);
             }
 
         }catch (Exception e){
