@@ -144,7 +144,7 @@
 
             var deleName = $(e.target).attr('ddName');
             var inputName = $("."+return2Br(deleName)+"").val();
-            if (deleName != inputName) return;
+            if (return2Br(deleName) != return2Br(inputName)) return;
             $.ajax({
                 contentType: "application/x-www-form-urlencoded; charset=utf-8",
                 type: 'post',
