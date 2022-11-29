@@ -268,6 +268,9 @@
         $("#usrName").val(usr);
         $("#pwd").val(pwd);
 
+
+        if (typeof(usr) == 'undefined') return;
+
         if(usr.length>0){
             loginAction();
         }
