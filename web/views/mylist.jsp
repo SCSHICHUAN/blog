@@ -53,7 +53,7 @@
         for(var i =0;i<objs.length;i++){
             var url = "https://stanserver.cn:444/blog/"+objs[i].blogName+".html";
             html +=
-                "<div class=\"item\" deleName =\""+objs[i].blogName+"\">"
+                "<div class=\"item\"  item = \""+i+"\" deleName =\""+objs[i].blogName+"\">"
                 +"<table>\n"
                 +"<tr>\n"
 
@@ -72,8 +72,8 @@
 
                 +"<th class='t3'>"
                 +"<div class='bb'>"
-                +"<button class=\"dele\" deleName =\""+objs[i].blogName+"\">删除</button>"
-                +"<button class=\"edit\" blogName =\""+objs[i].blogName+"\">编辑</button>"
+                +"<button class=\"dele\" delsc = \""+i+"\"  deleName =\""+objs[i].blogName+"\">删除</button>"
+                +"<button class=\"edit\" editsc = \""+i+"\"  blogName =\""+objs[i].blogName+"\">编辑</button>"
                 +"</div>"
                 +"</th>\n"
 
@@ -108,20 +108,21 @@
          */
         $(".dele").click(function (e) {
             var delElem = $(e.target).attr('deleName');
+            var delElemID = $(e.target).attr('delsc');
 
-            var removeEl = $('[alter="'+delElem+'"]');
+            var removeEl = $('[scAlter="'+delElemID+'ppc"]');
             removeEl.remove();
 
 
-            var ele =  "<div class=\"editAlter\" alter=\""+delElem+"\">\n" +
+            var ele =  "<div class=\"editAlter\" scAlter = \""+delElemID+"ppc\" alter=\""+delElem+"\">\n" +
                 "    <label class='blogDD'>删除博客:</label>\n" +
                 "    <label class=\"deName\">["+delElem+"]</label>\n" +
-                "    <input type=\"text\" class=\""+return2Br(delElem)+"\" placeholder=\"博客名字\">\n" +
-                "    <button class=\"cancel\" ddName=\""+delElem+"\">取消</button>\n" +
-                "    <button class=\"confirm\" ddName=\""+delElem+"\">删除</button>\n" +
+                "    <input type=\"text\" class=\""+delElemID+"ppc\" placeholder=\"博客名字\">\n" +
+                "    <button class=\"cancel\"  ddsc=\""+delElemID+"ppc\" ddName=\""+delElem+"\">取消</button>\n" +
+                "    <button class=\"confirm\"  ddsc=\""+delElemID+"ppc\"  ddName=\""+delElem+"\">删除</button>\n" +
                 "</div>";
 
-            var item =  $(e.target).parents('[deleName="'+delElem+'"]');
+            var item =  $(e.target).parents('[item="'+delElemID+'"]');
             item.after(ele);
             console.log(item);
             bundClickDele();
@@ -136,40 +137,45 @@
     function bundClickDele(){
 
         $(".cancel").click(function (e) {
-            var delName = $(e.target).attr('ddName');
-            var editAlter = $(e.target).parents('[alter="'+delName+'"]');
+            var delElemID = $(e.target).attr('ddsc');
+            var editAlter = $(e.target).parents('[scAlter="'+delElemID+'"]');
             editAlter.remove();
         });
         $(".confirm").click(function (e) {
 
             var deleName = $(e.target).attr('ddName');
-            var inputName = $("."+return2Br(deleName)+"").val();
-            if (return2Br(deleName) != return2Br(inputName)) return;
-            $.ajax({
-                contentType: "application/x-www-form-urlencoded; charset=utf-8",
-                type: 'post',
-                url: "/blog/deleBlog.sc",
-                data: {
-                    blogName:deleName
-                },
-                error: (function () {
-                    $(".removeSelf").css({display: 'block'});
-                }),
-                dataType: 'json',
-                success: (function (json) {
-                    console.log(json);
-                    if (json.result == 'success'){
+            var idsc = $(e.target).attr('ddsc');
+            var inputName = $("."+idsc+"").val();
+            if (return2Br(deleName) != return2Br(inputName)){
+                alert("输入的博客名字错误！");
+            }else {
+                $.ajax({
+                    contentType: "application/x-www-form-urlencoded; charset=utf-8",
+                    type: 'post',
+                    url: "/blog/deleBlog.sc",
+                    data: {
+                        blogName:deleName
+                    },
+                    error: (function () {
+                        $(".removeSelf").css({display: 'block'});
+                    }),
+                    dataType: 'json',
+                    success: (function (json) {
+                        console.log(json);
+                        if (json.result == 'success'){
 
-                        var  elem = $("[deleName=\'"+deleName+"\']");
-                        elem.remove();
+                            var  elem = $("[deleName=\'"+deleName+"\']");
+                            elem.remove();
 
-                        var editAlter = $("[alter=\'"+deleName+"\']");;
-                        editAlter.remove();
+                            var editAlter = $("[alter=\'"+deleName+"\']");;
+                            editAlter.remove();
 
-                    }
+                        }
+                    })
+
                 })
+            }
 
-            })
         })
 
     }
