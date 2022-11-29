@@ -155,7 +155,7 @@ public class CreateBlog {
 //        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd_HHmmss");
 //        Date now = new Date();
 //        String pathFile= "/Users/stan/Desktop/"+sdf.format(now)+".html";
-        String pathFile= Share.fileHome()+blogName+".html";
+        String pathFile= Share.fileHome(request)+blogName+".html";
 
         File file = new File(pathFile);
         try {

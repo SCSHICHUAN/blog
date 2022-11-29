@@ -279,13 +279,19 @@
 
 
 
+    var host =  document.domain;
+    if (host == "localhost") {
+        host = "http://localhost:8080";
+    }else {
+        host = "https://stanserver.cn";
+    }
+    
+
     $(".world").click(function () {
-        // window.open("http://localhost:8080/blog/list","_blank");
-        window.open("https://stanserver.cn/blog/list","_blank");
+        window.open(host+"/blog/list","_blank");
     })
     $(".blogs").click(function () {
-        // window.open("http://localhost:8080/blog/mylist","_blank");
-        window.open("https://stanserver.cn/blog/mylist","_blank");
+        window.open(host+"/blog/mylist","_blank");
     })
 
     $(".quit").click(function () {

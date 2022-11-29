@@ -53,20 +53,36 @@ a{
     border-radius: 2px;
     margin-right: 10px;
 }
-.dele,.confirm{
+.dele{
     border: 1px solid rgba(216,13,11,0.8);
     background: rgba(216,13,11,0.8);
     color: white;
 }
 
-.edit,.cancel{
+.edit{
     background: rgb(71,148,255);
     color: white;
 }
+
+.confirm{
+    border: 1px solid rgba(216,13,11,0.8);
+    background: rgba(216,13,11,0.2);
+    color: rgba(216,13,11,0.8);
+}
+.cancel{
+    border: 1px solid rgba(71,148,255,0.8);
+    background: rgba(71,148,255,0.2);
+    color: rgba(71,148,255,0.8);
+}
+
+
+
 .deName,.blogDD{
     color: red;
 }
-
+.confirm{
+    margin-right: 10px;
+}
 
 .time,.timeEdit{
     font-weight: lighter;
@@ -90,15 +106,15 @@ a{
 
 .editAlter{
     width: 95%;
-    padding: 5px;
-    margin: -10px 10px 0px 10px;
+    padding: 5px 0px 5px 0px;
+    margin: -5px 0px 10px 5px;
     /*border: 1px solid rgb(216,13,11);*/
-    background: rgba(216,13,11,0.2);
-    border-radius: 2px;
+    background: rgba(216,13,11,0.1);
     color: black;
     text-align: right;
     /*z-index: 999;*/
     /*visibility: hidden;*/
+
 
 }
 .t0{

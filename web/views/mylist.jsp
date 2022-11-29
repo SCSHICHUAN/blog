@@ -116,7 +116,7 @@
             var ele =  "<div class=\"editAlter\" alter=\""+delElem+"\">\n" +
                 "    <label class='blogDD'>删除博客:</label>\n" +
                 "    <label class=\"deName\">["+delElem+"]</label>\n" +
-                "    <input type=\"text\" class=\""+delElem+"\" placeholder=\"博客名字\">\n" +
+                "    <input type=\"text\" class=\""+return2Br(delElem)+"\" placeholder=\"博客名字\">\n" +
                 "    <button class=\"cancel\" ddName=\""+delElem+"\">取消</button>\n" +
                 "    <button class=\"confirm\" ddName=\""+delElem+"\">删除</button>\n" +
                 "</div>";
@@ -143,7 +143,7 @@
         $(".confirm").click(function (e) {
 
             var deleName = $(e.target).attr('ddName');
-            var inputName = $("."+deleName+"").val();
+            var inputName = $("."+return2Br(deleName)+"").val();
             if (deleName != inputName) return;
             $.ajax({
                 contentType: "application/x-www-form-urlencoded; charset=utf-8",
@@ -172,6 +172,15 @@
             })
         })
 
+    }
+
+
+    function return2Br(str) {
+        var tmpStr = str;
+        tmpStr = str.replace(/\s*/g,"");
+        tmpStr = tmpStr.replace(/\r?\n/g,"");
+        tmpStr = tmpStr.replace(".","");
+        return tmpStr;
     }
 
 </script>

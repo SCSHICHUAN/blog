@@ -29,7 +29,7 @@ public class EditBlog {
         SaveUserLogin saveUserLogin = new SaveUserLogin();
         String cookieID = saveUserLogin.loginCookis(request,"blogCookNameID");
 
-        String filePath = Share.fileHome()+blogName+".html";
+        String filePath = Share.fileHome(request)+blogName+".html";
         //读取.html文件为字符串
         String htmlStr = toHtmlString(new File(filePath));
         //解析字符串为Document对象
