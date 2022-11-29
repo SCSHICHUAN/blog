@@ -41,8 +41,8 @@
    <input id="blogName" placeholder="请输入博客名不能重复">
 </div>
 
-      <div id="editor-toolbar" style="border-bottom: 1px solid #ccc;"></div>
-      <div id="editor-text-area"></div>
+<div id="editor-toolbar" style="border-bottom: 1px solid #ccc;"></div>
+<div id="editor-text-area"></div>
 
 <script type="text/javascript" src="/blog/js/editMain.js"></script>
 <div style="text-align:center;padding-bottom: 10px;padding-top: 20px"><code>stanserver.cn stanserver@163.com</code></div></body>
