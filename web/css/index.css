@@ -31,6 +31,8 @@ body{
     font-size: 10px;
     color: white;
     margin: 15px;
+    position: relative;
+    z-index: 1;
 }
 .commit{
 
@@ -94,7 +96,11 @@ color:rgba(255,255,255,0.7);
     min-height: 500px;
 }
 .longin{
-    float: right;
+    /*float: right;*/
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    z-index: 999;
 }
 .world:hover{
     background: rgba(71,148,255,0.5);
