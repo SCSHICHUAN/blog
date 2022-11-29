@@ -107,7 +107,7 @@ color:rgba(255,255,255,0.7);
 .blogs:active{
     background: rgba(71,148,255,0.2);
 }
-.showLogin,.blogs,.world{
+.showLogin,.blogs,.world,.quit,.save{
 
     height: 20px;
     border-radius: 3px;
@@ -117,7 +117,20 @@ color:rgba(255,255,255,0.7);
     background: rgba(255,255,255,0);
     color: rgb(71,148,255);
 }
-
+.quit:hover{
+    background: rgba(71,148,255,0.5);
+    color: white;
+}
+.quit:active{
+    background: rgba(71,148,255,0.2);
+}
+.save:hover{
+     background: rgba(71,148,255,0.5);
+     color: white;
+ }
+.save:active{
+    background: rgba(71,148,255,0.2);
+}
 .showLogin:hover{
     background: rgba(71,148,255,0.5);
     color: white;

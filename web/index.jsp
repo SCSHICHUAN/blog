@@ -26,20 +26,13 @@
   <button class="commit">提交</button>
   <label class="wel4"><span id="total-length"></span><label id="bacUrl"></label></label>
     <div class="longin">
+        <button class="save">save</button>
         <button class="world">world</button>
-        <button class="blogs">blos</button>
+        <button class="blogs">my blos</button>
+        <button class="quit">quit</button>
         <label class="longinTips"></label>
         <button class="showLogin">未登陆</button>
     </div>
-</div>
-
-<div class="longin1">
-    <button class="mailBtn">忘记密码未注册</button>
-    <input id = "mail" placeholder="mail">
-    <input id = "mailCode" placeholder="邮寄验证码">
-    <input id = "usrName" placeholder="user">
-    <input id = "pwd" placeholder="password">
-    <input id = "repwd" placeholder="确定密码">
 </div>
 
 
@@ -54,10 +47,29 @@
 <script type="text/javascript" src="/blog/js/editMain.js"></script>
 <div style="text-align:center;padding-bottom: 10px;padding-top: 20px"><code>stanserver.cn stanserver@163.com</code></div></body>
 <script>
+
+
+    function creatLoginView(){
+
+        return "<div class=\"longin1\">\n" +
+            "    <button class=\"mailBtn\">忘记密码未注册</button>\n" +
+            "    <input id = \"mail\" placeholder=\"mail\">\n" +
+            "    <input id = \"mailCode\" placeholder=\"邮箱验证码\">\n" +
+            "    <input id = \"usrName\" placeholder=\"user\">\n" +
+            "    <input id = \"pwd\" placeholder=\"password\">\n" +
+            "    <input id = \"repwd\" placeholder=\"确定密码\">\n" +
+            "</div>"
+
+    }
+
     $(".showLogin").click(function (e) {
         var ele = $(".showLogin");
         var cotent = ele.text();
         if (cotent == "未登陆"){
+
+            $(".longin1").remove();
+            $(".wel3").after(creatLoginView());
+            blinMailBtn();
 
             ele.text('登陆');
 
@@ -76,54 +88,60 @@
 
     })
 
-    $(".mailBtn").click(function (e) {
+    function blinMailBtn(){
 
-        if ($(e.target).text() == '获取邮件验证码'){
+        $(".mailBtn").click(function (e) {
 
-            var  mail = $("#mail").val();
+            if ($(e.target).text() == '获取邮件验证码'){
 
-            if(mail.length <= 0){
-                $(".longinTips").text('请输入你的邮件！');
-                alert("请输入你的邮件！");
+                var  mail = $("#mail").val();
+
+                if(mail.length <= 0){
+                    $(".longinTips").text('请输入你的邮件！');
+                    alert("请输入你的邮件！");
+                }else {
+
+                    $.ajax({
+                        contentType: "application/x-www-form-urlencoded; charset=utf-8",
+                        type: 'post',
+                        url: "/blog/sendMailCodeBlog",
+                        data: {
+                            mail:mail
+                        },
+                        error: (function () {
+                            $(".longinTips").text('请求错误');
+                        }),
+                        dataType: 'text',
+                        success: (function (json) {
+                            console.log(json);
+                            if(json == "success"){
+                                $(".longinTips").text('邮件已经发送成功！');
+                                alert("邮件已经发送成功！")
+                            }else {
+                                $(".longinTips").text('邮件发送失败！');
+                                alert("邮件发送失败");
+                            }
+                        })
+                    })
+                }
+
             }else {
 
-                $.ajax({
-                    contentType: "application/x-www-form-urlencoded; charset=utf-8",
-                    type: 'post',
-                    url: "/blog/sendMailCodeBlog",
-                    data: {
-                        mail:mail
-                    },
-                    error: (function () {
-                        $(".longinTips").text('请求错误');
-                    }),
-                    dataType: 'text',
-                    success: (function (json) {
-                        console.log(json);
-                        if(json == "success"){
-                            $(".longinTips").text('邮件已经发送成功！');
-                            alert("邮件已经发送成功！")
-                        }else {
-                            $(".longinTips").text('邮件发送失败！');
-                            alert("邮件发送失败");
-                        }
-                    })
-                })
+                $(".showLogin").text('注册或找回密码');
+                $(e.target).text("获取邮件验证码");
+                $("#mail").animate({opacity:'1'});
+                $("#mailCode").animate({opacity:'1'});
+
+                $("#usrName").animate({right:'330px'});
+                $("#pwd").animate({right:'170px'});
+                $("#repwd").animate({top:'40px',right:'10px',width:'150px',opacity:1});
+
             }
+        })
 
-        }else {
+    }
 
-            $(".showLogin").text('注册或找回密码');
-            $(e.target).text("获取邮件验证码");
-            $("#mail").animate({opacity:'1'});
-            $("#mailCode").animate({opacity:'1'});
 
-            $("#usrName").animate({right:'330px'});
-            $("#pwd").animate({right:'170px'});
-            $("#repwd").animate({top:'40px',right:'10px',width:'150px',opacity:1});
-
-        }
-    })
 
 
      function loginAction() {
@@ -158,6 +176,7 @@
                         $(".longin1").remove();
                     }else {
                         $(".longinTips").text('账号或密码错误');
+                        $(".showLogin").text('未登陆');
                     }
 
                 })
@@ -239,11 +258,16 @@
 
     //检查用户是否已经登陆
     function cookieLogin() {
+
+        $(".wel3").after(creatLoginView());
+        blinMailBtn();
+
         var usr = getcookie("blogCookNameUsr");
         var pwd = getcookie("blogCookNamePwd");
 
-       var usr =  $("#usrName").val(usr);
+        $("#usrName").val(usr);
         $("#pwd").val(pwd);
+
         if(usr.length>0){
             loginAction();
         }
@@ -259,6 +283,12 @@
     $(".blogs").click(function () {
         // window.open("http://localhost:8080/blog/mylist","_blank");
         window.open("https://stanserver.cn/blog/mylist","_blank");
+    })
+
+    $(".quit").click(function () {
+        $(".showLogin").text("未登陆");
+        document.cookie = "blogCookNameUsr =";
+        document.cookie = "blogCookNamePwd =";
     })
 
 

@@ -50,10 +50,19 @@ window.toolbar = E.createToolbar({
 
 
 
+
+
+
+
+
+
+
+/**
+ * save commit
+ */
 var canEdit = 'no';
-$(".commit").click(function () {
-
-
+var saveEdit = false;
+function sendArticleToServer() {
 
     var  blogName = $("#blogName").val();
     var  result = window.editor.getHtml();
@@ -92,21 +101,37 @@ $(".commit").click(function () {
                     $("#blogName").attr('disabled','disabled');
                     canEdit = 'yes';
                 case "creatBlogNOlogin":
-                    // $("#total-length").html("你还没有登陆");
+                // $("#total-length").html("你还没有登陆");
             }
 
         })
 
     })
+    
+}
 
 
-    function createBlogSuccess(obj) {
-        var url = obj.url;
-        $("#bacUrl").html("<a class='result' href="+url+">"+url+"</a>");
+function createBlogSuccess(obj) {
+    var url = obj.url;
+    $("#bacUrl").html("<a class='result' href="+url+">"+url+"</a>");
+    if (!saveEdit){
         window.open(url,"_blank");
     }
+}
+
+$(".commit").click(function () {
+    saveEdit = false;
+    sendArticleToServer();
 
 })
+$(".save").click(function () {
+    saveEdit = true;
+    sendArticleToServer();
+})
+
+
+
+
 
 
 /**
