@@ -74,6 +74,7 @@ function sendArticleToServer() {
         return $("#total-length").html("博客内容为空...");
 
 
+    $("#bacUrl").html("");
 
     $.ajax({
         contentType: "application/x-www-form-urlencoded; charset=utf-8",
