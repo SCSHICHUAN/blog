@@ -291,7 +291,12 @@
         window.open(host+"/blog/list","_blank");
     })
     $(".blogs").click(function () {
-        window.open(host+"/blog/mylist","_blank");
+
+        if($(".showLogin").text() == '已登陆'){
+            window.open(host+"/blog/mylist","_blank");
+        }else {
+            alert("未登陆")
+        }
     })
 
     $(".quit").click(function () {
