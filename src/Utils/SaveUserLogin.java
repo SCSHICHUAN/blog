@@ -15,18 +15,21 @@ public class SaveUserLogin {
         response.setContentType("text/html;charset=utf-8");
         response.setCharacterEncoding("utf-8");
 
+
+        int stoneTime = 60 * 60 * 24;
+
         // 创建Cookie
         Cookie cookie = new Cookie("blogCookNameUsr", usr);
         // 有效期,秒为单位
-        cookie.setMaxAge(3600);
+        cookie.setMaxAge(stoneTime);
 
 
         Cookie cookie1 = new Cookie("blogCookNamePwd", pwd);
-        cookie1.setMaxAge(3600);
+        cookie1.setMaxAge(stoneTime);
 
 
         Cookie cookie2 = new Cookie("blogCookNameID", usrID);
-        cookie2.setMaxAge(3600);
+        cookie2.setMaxAge(stoneTime);
 
         // 设置cookie
         response.addCookie(cookie);
