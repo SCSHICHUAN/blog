@@ -16,6 +16,10 @@
     <link href="https://cdn.bootcdn.net/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/@wangeditor/editor@latest/dist/css/style.css" rel="stylesheet">
     <script src="https://unpkg.com/@wangeditor/editor@latest/dist/index.js"></script>
+    <%--<link href="/blog/wangEdit/normalize.css" rel="stylesheet">--%>
+    <%--<link href="/blog/wangEdit/style.css" rel="stylesheet">--%>
+    <%--<script src="/blog/wangEdit/edit.js"></script>--%>
+
     <link href="css/index.css" rel="stylesheet">
     <script type="text/javascript" src="/blog/js/jquery-1.4.2.js"></script>
 </head>

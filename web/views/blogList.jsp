@@ -44,9 +44,8 @@
             })
         })
     }
-
-
-    showBlogList();
+    
+    setTimeout(showBlogList(),1000);
 
     function showList(objs) {
 
