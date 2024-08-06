@@ -65,7 +65,7 @@
                +"<a class='info'>"
                +"<a\ class=\"headName\">"+objs[i].blogName+"</a>"
                +"<br/>"
-                  +"<a href='"+url+"'>"+url+"</a>"
+                  +"<a href='"+url+"' target=\"_blank\">"+url+"</a>"
                +"</div>"
             +"</th>\n"
 
