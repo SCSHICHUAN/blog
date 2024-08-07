@@ -33,6 +33,7 @@ public class CreateBlog {
 
         String html = (String) req.getParameter("html");
         String blogName = (String) req.getParameter("blogName");
+        String categoryName = (String) req.getParameter("categoryName");
         String canEdit = (String) req.getParameter("canEdit");
         String totalText = (String) req.getParameter("totalText");
 
@@ -40,12 +41,12 @@ public class CreateBlog {
 
         if (getBlogName(blogName)){
             if (Objects.equals(canEdit,"yes")){
-                saveBlogHtml(blogName,totalText,html,false);
+                saveBlogHtml(blogName,totalText,html,false,categoryName);
             }else {
                 creatBlogFailed(req,res);
             }
         }else {
-            saveBlogHtml(blogName,totalText,html,true);
+            saveBlogHtml(blogName,totalText,html,true,categoryName);
         }
 
 
@@ -67,7 +68,7 @@ public class CreateBlog {
 
 
     //保存创建blog文件 和保存数据库记录
-    private static void saveBlogHtml(String blogName,String totalText,String html,boolean b){
+    private static void saveBlogHtml(String blogName,String totalText,String html,boolean b,String categoryName){
 
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -99,8 +100,10 @@ public class CreateBlog {
                 "\ttext-align: left;\n" +
                 "\tmax-width: 80%;\n" +
                 "\tmargin-left:2.5%; \n" +
-                "\tword-wrap:break-word\"><code>"+blogName+" \n" +
-                "\t\t<br/>Text:"+totalText+" Create:"+createTime+" Edit:"+editTime+"</code>\n" +
+                "\tword-wrap:break-word\">" +
+                "<code><h2 style=\"margin: 0px \"> "+blogName+ "</h2>\n" +
+                "<h3 style=\"margin: 10px 0px 0px  0px\">"+categoryName+"</h3>\n" +
+                "\tText:"+totalText+" Create:"+createTime+" Edit:"+editTime+"</code>\n" +
                 "</div>\n" +
                 "</div>";
 
@@ -154,8 +157,8 @@ public class CreateBlog {
         //输出文件1029
 //        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd_HHmmss");
 //        Date now = new Date();
-//        String pathFile= "/Users/stan/Desktop/"+sdf.format(now)+".html";
-        String pathFile= Share.fileHome(request)+blogName+".html";
+        String pathFile= "/Users/stan/Desktop/"+sdf.format(now)+".html";
+//        String pathFile= Share.fileHome(request)+blogName+".html";
 
         File file = new File(pathFile);
         try {

@@ -22,7 +22,8 @@
     <%--<button class="confirm">删除</button>--%>
 <%--</div>--%>
 
-<div class="headTxt">List of blogs with <span class="allBlogs"></span> posts</div>
+<div class="headTxt">List of blogs with <span class="allBlogs"></span> posts </div>
+<h1 >openGL</h1>
 <div class="list"></div>
 <script>
 
@@ -53,6 +54,7 @@
         for(var i =0;i<objs.length;i++){
             var url = "https://stanserver.cn:444/blog/"+objs[i].blogName+".html";
               html +=
+
             "<div class=\"item\" deleName =\""+objs[i].blogName+"\">"
             +"<table>\n"
             +"<tr>\n"
@@ -62,11 +64,7 @@
             "</th>"
 
             +"<th class='t1'>"
-               +"<a class='info'>"
-               +"<a\ class=\"headName\">"+objs[i].blogName+"</a>"
-               +"<br/>"
-                  +"<a href='"+url+"' target=\"_blank\">"+url+"</a>"
-               +"</div>"
+                  +"<a  href='"+url+"' target=\"_blank\">"+objs[i].blogName+"</a>"
             +"</th>\n"
 
             +"<th class='t2'>"

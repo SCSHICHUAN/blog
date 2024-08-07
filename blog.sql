@@ -12,6 +12,9 @@ CREATE TABLE `blogName` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8
 
+alter table blogName add `categoryName` varchar(100) NOT NULL COMMENT '分组名字';
+
+
 
 CREATE TABLE `usr` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增id',
@@ -25,3 +28,13 @@ CREATE TABLE `usr` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8
 
 alter table blogName modify column usrID varchar(20) DEFAULT NULL COMMENT '用 户id'
+
+
+CREATE TABLE `blogCategory` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增id',
+  `usrID` varchar(20) DEFAULT NULL COMMENT '用 户id',
+  `categoryName` varchar(100) NOT NULL COMMENT '分组名字',
+  `createDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '分组创建时间,仅插入时纪录',
+  `updateDate` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '分组修改时间,记录,数据库必须有改动',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=143 DEFAULT CHARSET=utf8

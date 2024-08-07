@@ -42,6 +42,9 @@
 
 <div class="wel1">Welcome to my blog Create Space</div>
 <div class="wel2">
+    <input id="categoryName" placeholder="分组名字默认 Others">
+</div>
+<div class="wel2">
    <input id="blogName" placeholder="请输入博客名不能重复">
 </div>
 

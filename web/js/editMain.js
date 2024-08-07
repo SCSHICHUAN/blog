@@ -65,6 +65,7 @@ var saveEdit = false;
 function sendArticleToServer() {
 
     var  blogName = $("#blogName").val();
+    var  categoryName = $("#categoryName").val();
     var  result = window.editor.getHtml();
 
 
@@ -72,7 +73,9 @@ function sendArticleToServer() {
         return $("#total-length").html("请输入博客名字...");
     if(result.length <= 0)
         return $("#total-length").html("博客内容为空...");
-
+    if(categoryName.length <= 0){
+        categoryName = "Others"
+    }
 
     $("#bacUrl").html("");
 
@@ -82,6 +85,7 @@ function sendArticleToServer() {
         url: "/blog/addBlog.sc",
         data: {
             blogName:blogName,
+            categoryName:categoryName,
             totalText:totalText,
             html: result,
             canEdit:canEdit
