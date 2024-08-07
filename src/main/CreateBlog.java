@@ -157,8 +157,8 @@ public class CreateBlog {
         //输出文件1029
 //        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd_HHmmss");
 //        Date now = new Date();
-        String pathFile= "/Users/stan/Desktop/"+sdf.format(now)+".html";
-//        String pathFile= Share.fileHome(request)+blogName+".html";
+//        String pathFile= "/Users/stan/Desktop/"+sdf.format(now)+".html";
+        String pathFile= Share.fileHome(request)+blogName+".html";
 
         File file = new File(pathFile);
         try {
@@ -175,7 +175,7 @@ public class CreateBlog {
             fop.close();
 
 
-            saveBlogToSql(blogName,b);
+            saveBlogToSql(blogName,categoryName,b);
             responesToCline(response,blogName);
 
         } catch (Exception e) {
@@ -189,7 +189,7 @@ public class CreateBlog {
      * @param name
      * @param update
      */
-    private static void saveBlogToSql(String name,boolean update){
+    private static void saveBlogToSql(String name,String categoryName,boolean update){
 
 
         SaveUserLogin saveUserLogin = new SaveUserLogin();
@@ -200,8 +200,11 @@ public class CreateBlog {
 
         if (update){
             //mysql save name
-            BlogName blogName1 = new BlogName(null,cookieID,cookieUsr,name,null,null);
+            BlogName blogName1 = new BlogName(null,cookieID,cookieUsr,name,categoryName,null,null);
             AddBlogName(blogName1);
+            if(!getCategoryName(blogName1.usrID,blogName1.categoryName)){//如果这个用户没有这个分组就创建一个
+                AddCategoryName(blogName1);
+            }
         }else {
             updateTime(name);
         }
@@ -226,7 +229,7 @@ public class CreateBlog {
     /**
      *
      * @param blogName
-     * @return 数据库操作成功
+     * @return 添加blogName到数据库
      */
     public  static  boolean AddBlogName(BlogName blogName){
         Connection c  = null;
@@ -235,11 +238,13 @@ public class CreateBlog {
 
         try {
             c = JDBC.GetConnection();
-            String sql = "insert blogName(usrID,usrName,blogName) values(?,?,?)";
+            String sql = "insert blogName(usrID,usrName,blogName,categoryName) values(?,?,?,?)";
             p = c.prepareStatement(sql);
             p.setObject(1,blogName.usrID);
             p.setObject(2,blogName.usrName);
             p.setObject(3,blogName.blogName);
+            p.setObject(4,blogName.categoryName);
+
 
             int rows = p.executeUpdate();
             if (rows > 0){
@@ -255,6 +260,40 @@ public class CreateBlog {
             JDBC.close(p,c);
         }
     }
+
+
+    /**
+     * @param blogName
+     * @return
+     */
+    public  static  boolean AddCategoryName(BlogName blogName){
+        Connection c  = null;
+        PreparedStatement p = null;
+        Date date = new Date();
+
+        try {
+            c = JDBC.GetConnection();
+            String sql = "insert blogCategory(usrID,categoryName) values(?,?)";
+            p = c.prepareStatement(sql);
+            p.setObject(1,blogName.usrID);
+            p.setObject(2,blogName.categoryName);
+
+
+            int rows = p.executeUpdate();
+            if (rows > 0){
+                return true;
+            }else {
+                return false;
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }finally {
+            JDBC.close(p,c);
+        }
+    }
+
 
     /**
      *
@@ -287,6 +326,41 @@ public class CreateBlog {
 
         return false;
     }
+
+    /**
+     *
+     * @param usrID
+     * @return 检查是已经存在当前usrID下 categoryName
+     */
+    public static boolean getCategoryName(String usrID,String categoryName){
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = JDBC.GetConnection();
+            String sql = "select * from blogCategory where usrID = ? and categoryName = ?";
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setObject(1,usrID);
+            preparedStatement.setObject(2,categoryName);
+
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                String tmpBlogName = resultSet.getString("categoryName");
+//                System.out.print(tmpBlogName);
+                return true;
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            JDBC.close(preparedStatement,connection);
+        }
+
+        return false;
+    }
+
+
 
     /**
      *
@@ -347,6 +421,7 @@ public class CreateBlog {
                         resultSet.getString("usrID"),
                         resultSet.getString("usrName"),
                         resultSet.getString("blogName"),
+                        resultSet.getString("categoryName"),
                         resultSet.getString("createDate"),
                         resultSet.getString("updateDate"));
                 if (Objects.equals(resultSet.getString("updateDate"),null)){

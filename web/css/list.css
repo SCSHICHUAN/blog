@@ -14,8 +14,9 @@ body{
     color: white;
 }
 
-h1{
+h1,h2,h3,h4{
     margin-left: 20px;
+    margin-bottom: 5px;
     color:rgb(71,148,255);
 }
 .item{

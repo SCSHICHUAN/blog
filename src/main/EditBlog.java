@@ -25,6 +25,7 @@ public class EditBlog {
 
 
         String blogName = (String)request.getParameter("blogName");
+        String categoryName = (String)request.getParameter("categoryName");
         String usrId  = usrAction(blogName);
         SaveUserLogin saveUserLogin = new SaveUserLogin();
         String cookieID = saveUserLogin.loginCookis(request,"blogCookNameID");

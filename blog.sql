@@ -38,3 +38,50 @@ CREATE TABLE `blogCategory` (
   `updateDate` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '分组修改时间,记录,数据库必须有改动',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=143 DEFAULT CHARSET=utf8
+
+
+
+
+/**
+ 链表查询 blog
+ */
+
+SELECT
+    bn.*
+FROM
+    usr u
+JOIN
+    blogCategory bc ON u.usrID = bc.usrID
+JOIN
+    blogName bn ON bc.categoryName = bn.categoryName
+WHERE
+    bn.usrID = "20221128231019"
+ORDER BY
+    bn.categoryName, bn.createDate DESC,bc.createDate DESC;
+
+
+
+/**
+ 跟新 blogName 如果包含gl 的categoryName =  OpenGL
+ */
+
+UPDATE blogName
+SET categoryName = 'OpenGL'
+WHERE LOWER(blogName) LIKE '%gl%';
+
+
+/**
+ 跟新 blogName 如果不包含gl 的categoryName =  Other
+ */
+
+UPDATE blogName
+SET categoryName = 'Other'
+WHERE LOWER(blogName) NOT LIKE '%gl%';
+
+
+
+/**
+ 插入数据 blogCategory 
+ */
+
+insert blogCategory(usrID,categoryName) values('20221126221656','Other');

@@ -23,7 +23,6 @@
 <%--</div>--%>
 
 <div class="headTxt">List of blogs with <span class="allBlogs"></span> posts </div>
-<h1 >openGL</h1>
 <div class="list"></div>
 <script>
 
@@ -53,7 +52,13 @@
         var html = "";
         for(var i =0;i<objs.length;i++){
             var url = "https://stanserver.cn:444/blog/"+objs[i].blogName+".html";
-              html +=
+
+
+            if(objs[i].isShowCategory == "yes"){
+                html += "<h2 >"+objs[i].categoryName+"</h2>"
+            }
+
+            html +=
 
             "<div class=\"item\" deleName =\""+objs[i].blogName+"\">"
             +"<table>\n"

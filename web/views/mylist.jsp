@@ -52,7 +52,14 @@
         var html = "";
         for(var i =0;i<objs.length;i++){
             var url = "https://stanserver.cn:444/blog/"+objs[i].blogName+".html";
+
+
+            if(objs[i].isShowCategory == "yes"){
+                html += "<h2 >"+objs[i].categoryName+"</h2>"
+            }
+
             html +=
+
                 "<div class=\"item\"  item = \""+i+"\" deleName =\""+objs[i].blogName+"\">"
                 +"<table>\n"
                 +"<tr>\n"
@@ -73,7 +80,7 @@
                 +"<th class='t3'>"
                 +"<div class='bb'>"
                 +"<button class=\"dele\" delsc = \""+i+"\"  deleName =\""+objs[i].blogName+"\">删除</button>"
-                +"<button class=\"edit\" editsc = \""+i+"\"  blogName =\""+objs[i].blogName+"\">编辑</button>"
+                +"<button class=\"edit\" editsc = \""+i+"\"  blogName =\""+objs[i].blogName+"\" categoryName =\""+objs[i].categoryName+"\">编辑</button>"
                 +"</div>"
                 +"</th>\n"
 
@@ -90,17 +97,16 @@
 
     function bindButton(){
 
-
-
-
         /**
          * 编辑
          */
         $(".edit").click(function (e) {
             var blogName = $(e.target).attr('blogName');
+            var categoryName = $(e.target).attr('categoryName');
             var origin = window.location.origin;
             console.log(blogName);
-            window.open(origin+"/blog/?name="+blogName,"_blank");
+            window.open(origin+"/blog/?blogName="+blogName+"&categoryName="+categoryName,"_blank");
+            // window.open(origin+"/blog/?name="+blogName,"_blank");
         });
 
         /**

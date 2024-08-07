@@ -7,6 +7,8 @@ public class BlogName {
     public String blogName;
     public String createDate;
     public String updateDate;
+    public String categoryName;
+    public String isShowCategory;
 
     //可以运用编辑器快速生成
     public BlogName() {
@@ -18,11 +20,12 @@ public class BlogName {
         this.updateDate = updateDate;
     }
 
-    public BlogName(String id, String usrID, String usrName, String blogName, String createDate, String updateDate) {
+    public BlogName(String id, String usrID, String usrName, String blogName,String categoryName,String createDate, String updateDate) {
         this.id = id;
         this.usrID = usrID;
         this.usrName = usrName;
         this.blogName = blogName;
+        this.categoryName = categoryName;
         this.createDate = createDate;
         this.updateDate = updateDate;
     }
@@ -34,6 +37,7 @@ public class BlogName {
                 ", usrID='" + usrID + '\'' +
                 ", usrName='" + usrName + '\'' +
                 ", blogName='" + blogName + '\'' +
+                ", categoryName='" + categoryName + '\'' +
                 ", createDate='" + createDate + '\'' +
                 ", updateDate='" + updateDate + '\'' +
                 '}';

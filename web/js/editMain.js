@@ -143,7 +143,8 @@ $(".save").click(function () {
  * 编辑跳转过来
  **/
 var search = window.location.search;//获取参数；
-var name = getSearchString('name', search); //结果：18
+var name = getSearchString('blogName', search); //结果：18
+var categoryName = getSearchString('categoryName', search);
 //key(需要检索的键） url（传入的需要分割的url地址，例：?id=2&age=18）
 function getSearchString(key, Url) {
     var str = Url;
@@ -168,7 +169,8 @@ if (!(tmpName == 'undefined')){
         type: 'post',
         url: "/blog/edit.do.sc",
         data: {
-            blogName:name
+            blogName:name,
+            categoryName:categoryName
         },
         error: (function () {
             alert("你还没有登陆，或者请求失败");
@@ -183,6 +185,7 @@ if (!(tmpName == 'undefined')){
 
             if(json.result == "success"){
                 $("#blogName").val(tmpName).attr('disabled','disabled');
+                $("#categoryName").val(categoryName).attr('disabled','disabled');
                 canEdit = 'yes';
             }else if(json.result == "noself"){
                 $("#blogName").val("");
