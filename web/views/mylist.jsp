@@ -60,16 +60,16 @@
 
             html +=
 
-                "<div class=\"item\"  item = \""+i+"\" deleName =\""+objs[i].blogName+"\">"
+                "<div class=\"item\" deleName =\""+objs[i].blogName+"\">"
                 +"<table>\n"
                 +"<tr>\n"
 
+                +"<th class='t0'>\n" +
+                "<div class=\"usr\">"+objs[i].usrName+"</div>\n" +
+                "</th>"
+
                 +"<th class='t1'>"
-                +"<a class='info'>"
-                +"<a\ class=\"headName\">"+objs[i].blogName+"</a>"
-                +"<br/>"
-                +"<a href='"+url+"'>"+url+"</a>"
-                +"</div>"
+                +"<a  href='"+url+"' target=\"_blank\">"+objs[i].blogName+"</a>"
                 +"</th>\n"
 
                 +"<th class='t2'>"

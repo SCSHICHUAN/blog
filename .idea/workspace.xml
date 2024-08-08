@@ -10,16 +10,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog.sql" beforeDir="false" afterPath="$PROJECT_DIR$/blog.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/blog/blog.war" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blog/blog.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/blog/main/BlogList.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/blog/main/BlogList.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/blog/main/CreateBlog.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/blog/main/CreateBlog.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/blog/main/EditBlog.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/blog/main/EditBlog.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/blog/model/BlogName.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/blog/model/BlogName.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/BlogList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/BlogList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/CreateBlog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/CreateBlog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/EditBlog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/EditBlog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/BlogName.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/BlogName.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/css/list.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/css/list.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/js/editMain.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/js/editMain.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/views/blogList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/views/blogList.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/views/mylist.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/views/mylist.jsp" afterDir="false" />
     </list>
@@ -131,10 +121,11 @@
     <session id="-533664829">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.6" value="1" />
           <entry key="project.open.time.7" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.open.time.8" value="1" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -169,17 +160,17 @@
           <entry key="css" value="49" />
           <entry key="java" value="428" />
           <entry key="js" value="37" />
-          <entry key="jsp" value="269" />
-          <entry key="sql" value="62" />
+          <entry key="jsp" value="273" />
+          <entry key="sql" value="63" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="49" />
           <entry key="JAVA" value="428" />
-          <entry key="JSP" value="269" />
+          <entry key="JSP" value="273" />
           <entry key="JavaScript" value="37" />
-          <entry key="SQL" value="62" />
+          <entry key="SQL" value="63" />
         </counts>
       </usages-collector>
     </session>
@@ -192,23 +183,19 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/index.jsp">
+        <entry file="file://$PROJECT_DIR$/web/js/editMain.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1410">
-              <caret line="94" selection-start-line="94" selection-end-line="94" />
-              <folding>
-                <element signature="n#style#0;n#div#4;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#6;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="2805">
+              <caret line="187" column="51" selection-start-line="187" selection-start-column="51" selection-end-line="187" selection-end-column="51" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/js/editMain.js">
+        <entry file="file://$PROJECT_DIR$/web/views/blogList.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="427">
-              <caret line="187" column="51" selection-start-line="187" selection-start-column="51" selection-end-line="187" selection-end-column="51" />
+            <state relative-caret-position="398">
+              <caret line="77" column="20" lean-forward="true" selection-start-line="60" selection-start-column="12" selection-end-line="77" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -216,8 +203,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/views/mylist.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="164">
-              <caret line="107" column="73" selection-start-line="107" selection-start-column="61" selection-end-line="107" selection-end-column="73" />
+            <state relative-caret-position="101">
+              <caret line="77" column="24" selection-start-line="77" selection-start-column="24" selection-end-line="77" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -225,7 +212,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/server/Servlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
+            <state relative-caret-position="330">
               <caret line="30" selection-start-line="30" selection-end-line="30" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -237,8 +224,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/server/Filter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="562">
-              <caret line="67" lean-forward="true" selection-start-line="67" selection-end-line="67" />
+            <state relative-caret-position="825">
+              <caret line="67" selection-start-line="67" selection-end-line="67" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -249,7 +236,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/EditBlog.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
+            <state relative-caret-position="210">
               <caret line="29" selection-start-line="29" selection-end-line="29" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -270,8 +257,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/CreateBlog.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="274">
-              <caret line="376" column="26" lean-forward="true" selection-start-line="376" selection-start-column="26" selection-end-line="376" selection-end-column="80" />
+            <state relative-caret-position="5385">
+              <caret line="376" column="26" selection-start-line="376" selection-start-column="26" selection-end-line="376" selection-end-column="80" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -282,8 +269,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/blog.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="73" column="43" selection-start-line="73" selection-start-column="43" selection-end-line="73" selection-end-column="43" />
+            <state relative-caret-position="245">
+              <caret line="55" column="51" selection-start-line="55" selection-start-column="51" selection-end-line="55" selection-end-column="51" />
             </state>
           </provider>
         </entry>
@@ -291,7 +278,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/BlogName.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
+            <state relative-caret-position="150">
               <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
             </state>
           </provider>
@@ -374,13 +361,13 @@
         <option value="$PROJECT_DIR$/web/css/index.css" />
         <option value="$PROJECT_DIR$/web/index.jsp" />
         <option value="$PROJECT_DIR$/src/model/BlogName.java" />
-        <option value="$PROJECT_DIR$/web/views/blogList.jsp" />
         <option value="$PROJECT_DIR$/web/css/list.css" />
         <option value="$PROJECT_DIR$/src/main/BlogList.java" />
         <option value="$PROJECT_DIR$/src/main/EditBlog.java" />
-        <option value="$PROJECT_DIR$/web/views/mylist.jsp" />
         <option value="$PROJECT_DIR$/web/js/editMain.js" />
         <option value="$PROJECT_DIR$/src/main/CreateBlog.java" />
+        <option value="$PROJECT_DIR$/web/views/blogList.jsp" />
+        <option value="$PROJECT_DIR$/web/views/mylist.jsp" />
         <option value="$PROJECT_DIR$/blog.sql" />
       </list>
     </option>
@@ -436,6 +423,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -523,7 +511,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -774,11 +761,12 @@
       <workItem from="1676973778963" duration="487000" />
       <workItem from="1681189895744" duration="2053000" />
       <workItem from="1722931270663" duration="23951000" />
+      <workItem from="1723086029254" duration="1665000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="171750000" />
+    <option name="totallyTimeSpent" value="173836000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -794,28 +782,28 @@
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.5221774" visible="true" weight="0.22692575" />
-      <window_info id="Structure" order="1" sideWeight="0.46548325" side_tool="true" weight="0.27070063" />
+      <window_info id="Structure" order="1" sideWeight="0.46548325" side_tool="true" weight="0.27064538" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
       <window_info id="UI Designer" order="4" />
-      <window_info id="Favorites" order="5" sideWeight="0.46548325" side_tool="true" weight="0.27070063" />
+      <window_info id="Favorites" order="5" sideWeight="0.46548325" side_tool="true" weight="0.27064538" />
       <window_info id="Capture Tool" order="6" />
-      <window_info id="Web" order="7" sideWeight="0.47782257" side_tool="true" weight="0.21444044" />
+      <window_info id="Web" order="7" sideWeight="0.47782257" side_tool="true" weight="0.21443442" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.612192" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.19638243" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3139535" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.22739018" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.3290653" />
-      <window_info anchor="bottom" id="Application Servers" order="7" weight="0.3290653" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.33290654" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32816538" />
+      <window_info anchor="bottom" id="Application Servers" order="7" weight="0.32816538" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.33204135" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.32945737" />
-      <window_info anchor="bottom" id="Java Enterprise" order="11" weight="0.3290653" />
-      <window_info anchor="bottom" id="Database Changes" order="12" />
-      <window_info anchor="bottom" id="Version Control" order="13" />
-      <window_info anchor="bottom" id="File Transfer" order="14" weight="0.09171975" />
+      <window_info anchor="bottom" id="Java Enterprise" order="11" weight="0.32816538" />
+      <window_info anchor="bottom" id="Database Changes" order="12" weight="0.32945737" />
+      <window_info anchor="bottom" id="Version Control" order="13" weight="0.32945737" />
+      <window_info anchor="bottom" id="File Transfer" order="14" weight="0.090439275" />
       <window_info anchor="bottom" id="TypeScript" order="15" weight="0.32985657" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.24942264" />
@@ -831,6 +819,32 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -950,13 +964,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/js/jquery-1.4.2.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/web/css/index.css">
       <provider selected="true" editor-type-id="text-editor">
@@ -1051,13 +1059,6 @@
     <entry file="file://$PROJECT_DIR$/blog.iml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/views/blogList.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1405">
-          <caret line="60" column="19" lean-forward="true" selection-start-line="56" selection-start-column="11" selection-end-line="60" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1410">
@@ -1069,16 +1070,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Usr.java">
+    <entry file="file://$PROJECT_DIR$/web/js/editMain.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        <state relative-caret-position="2805">
+          <caret line="187" column="51" selection-start-line="187" selection-start-column="51" selection-end-line="187" selection-end-column="51" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/server/Servlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
+        <state relative-caret-position="330">
           <caret line="30" selection-start-line="30" selection-end-line="30" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1088,38 +1089,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/server/Filter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="562">
-          <caret line="67" lean-forward="true" selection-start-line="67" selection-end-line="67" />
+        <state relative-caret-position="825">
+          <caret line="67" selection-start-line="67" selection-end-line="67" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/views/mylist.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="107" column="73" selection-start-line="107" selection-start-column="61" selection-end-line="107" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/BlogName.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/js/editMain.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="427">
-          <caret line="187" column="51" selection-start-line="187" selection-start-column="51" selection-end-line="187" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/EditBlog.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
+        <state relative-caret-position="210">
           <caret line="29" selection-start-line="29" selection-end-line="29" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1127,20 +1107,48 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Usr.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/CreateBlog.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="376" column="26" lean-forward="true" selection-start-line="376" selection-start-column="26" selection-end-line="376" selection-end-column="80" />
+        <state relative-caret-position="5385">
+          <caret line="376" column="26" selection-start-line="376" selection-start-column="26" selection-end-line="376" selection-end-column="80" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/BlogName.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/views/blogList.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="398">
+          <caret line="77" column="20" lean-forward="true" selection-start-line="60" selection-start-column="12" selection-end-line="77" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/views/mylist.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="101">
+          <caret line="77" column="24" selection-start-line="77" selection-start-column="24" selection-end-line="77" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/blog.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="73" column="43" selection-start-line="73" selection-start-column="43" selection-end-line="73" selection-end-column="43" />
+        <state relative-caret-position="245">
+          <caret line="55" column="51" selection-start-line="55" selection-start-column="51" selection-end-line="55" selection-end-column="51" />
         </state>
       </provider>
     </entry>

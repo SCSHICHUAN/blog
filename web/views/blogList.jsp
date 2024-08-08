@@ -80,7 +80,8 @@
             +"<th class='t3'>"
                +"<div class='bb'>"
                // +"<button class=\"dele\" deleName =\""+objs[i].blogName+"\">删除</button>"
-               +"<button class=\"edit\" blogName =\""+objs[i].blogName+"\">复制</button>"
+               // +"<button class=\"edit\" blogName =\""+objs[i].blogName+"\">复制</button>"
+                +"<button class=\"edit\" editsc = \""+i+"\"  blogName =\""+objs[i].blogName+"\" categoryName =\""+objs[i].categoryName+"\">复制</button>"
                +"</div>"
             +"</th>\n"
 
@@ -100,9 +101,10 @@
 
         $(".edit").click(function (e) {
             var blogName = $(e.target).attr('blogName');
+            var categoryName = $(e.target).attr('categoryName');
             var origin = window.location.origin;
             console.log(blogName);
-            window.open(origin+"/blog/?name="+blogName,"_blank");
+            window.open(origin+"/blog/?blogName="+blogName+"&categoryName="+categoryName,"_blank");
         });
 
 

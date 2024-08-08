@@ -44,6 +44,16 @@ CREATE TABLE `blogCategory` (
 
 /**
  链表查询 blog
+
+有三表
+
+第一个 usr 表,         包含字段 usrID
+第二个 blogCategory 表,包含字段 usrID,categoryName
+第三个 blogName 表,    包含字段 categoryName,blogName,first,等字段
+
+第一步 从第一个表中获取所有的 usrID,
+第二步 从第二个表中根据 usrID,获取所有的 categoryName
+第三步 从第三个表中根据 categoryName,分组数据 输出 blogName 表 一行一行数据
  */
 
 SELECT
